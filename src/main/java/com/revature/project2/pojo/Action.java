@@ -146,17 +146,19 @@ public class Action {
 		this.user = 0;
 		this.uName = "";
 		this.amount = 0;
+		this.astat = STS.ATK.getValue();
 		this.dstat = STS.DEF.getValue();
 		this.tstat = STS.HP.getValue();
 	}
 
-	public Action(String name, int user, String uName, int[] targets, int amount, int dstat, int tstat) {
+	public Action(String name, int user, String uName, int[] targets, int amount, int astat, int dstat, int tstat) {
 		super();
 		this.name = name;
 		this.user = user;
 		this.uName = uName;
 		this.targets = targets;
 		this.amount = amount;
+		this.astat = astat;
 		this.dstat = dstat;
 		this.tstat = tstat;
 	}
