@@ -1,6 +1,6 @@
 <h2>Login</h2>
-<input id="username"/>
+<input  [(ngModel)]="u.username"/>
 <br>
-<input id="password"/>
+<input type="password" [(ngModel)]="u.password"/>
 <br>
-<button id="loginBtn">Login</button>
+<button (click)="sendLogin()">Login</button>
