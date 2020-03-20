@@ -105,6 +105,7 @@ public abstract class Actor implements BattleInterface {
 		super();
 		stats = new Stats();
 		name = "Character";
+		action = new Action();
 	}
 
 	public abstract Action act(List<Integer> p1, List<Integer> p2);
