@@ -29,6 +29,6 @@ export class LoginComponent implements OnInit {
 
   // Methods
   sendLogin(): void{
-    this.loginService.authenticate(this.u);
+    this.loginService.sendLogin(this.u);
   }
 }
