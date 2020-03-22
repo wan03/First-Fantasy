@@ -11,6 +11,7 @@ import { MainMenuComponent } from "./main-menu/main-menu.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
+import { DungeonComponent } from './dungeon/dungeon.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     NavbarComponent,
     CarouselComponent,
     RegistrationFormComponent,
+    DungeonComponent,
     HomePageComponent
   ],
   imports: [
