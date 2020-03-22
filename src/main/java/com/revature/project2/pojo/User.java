@@ -120,6 +120,12 @@ public class User {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", name=" + name + ", email=" + email + ", password=" + password + ", characters="
+				+ characters + ", party=" + party + "]";
+	}
+
 	public User() {
 		super();
 		characters = new ArrayList<Player>();
