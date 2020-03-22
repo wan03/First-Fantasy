@@ -6,6 +6,7 @@ import java.util.Map;
 // The purpose of this enumeration is to enable developers to grab a desired Stat from a Stat Object using a single command.
 // It simplifies retrieving stats as well as provides alternate names for them.
 public enum STS {
+	 NA(-1),
 	 HP(0), 
 	 STAM(0),
 	 STAMINA(0),

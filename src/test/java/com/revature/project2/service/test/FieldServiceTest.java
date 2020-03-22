@@ -2,6 +2,9 @@ package com.revature.project2.service.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,21 +12,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.revature.project2.pojo.Action;
-import com.revature.project2.pojo.Actor;
 import com.revature.project2.pojo.Monster;
 import com.revature.project2.pojo.Player;
 import com.revature.project2.pojo.Stats;
-import com.revature.project2.service.BattleService;
+import com.revature.project2.pojo.TargetParams;
 import com.revature.project2.service.FieldService;
-import com.revature.project2.util.ELM;
 import com.revature.project2.util.STS;
 import com.revature.project2.util.TGT;
 
-public class BattleServiceTest {
+public class FieldServiceTest {
 
-	BattleService bs;
 	FieldService fs;
-	
 	Player player1 = new Player();
 	Player player2 = new Player();
 	Player player3 = new Player();
@@ -33,6 +32,8 @@ public class BattleServiceTest {
 	Monster monster2 = new Monster();
 	Monster monster3 = new Monster();
 	Monster monster4 = new Monster();
+	
+	List<Integer> expected = new ArrayList<Integer>();
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -44,41 +45,31 @@ public class BattleServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		fs = FieldService.getField();
-		bs = BattleService.getBattleService();
 		
 		Stats gob1Stats = new Stats(25,15,10,5,5,3);
 		Stats gob2Stats = new Stats(25,15,10,5,5,3);
 		Stats gob3Stats = new Stats(25,15,10,5,5,3);
 		Stats gob4Stats = new Stats(25,15,10,5,5,3);
 		Stats warStats = new Stats(30,15,10,5,5,5);
-		Stats magStats = new Stats(25,5,5,10,8,5);
+		Stats magStats = new Stats(25,10,5,15,10,5);
 		Stats grdStats = new Stats(35,15,12,5,8,3);
-		Stats hlrStats = new Stats(25,5,8,8,5,7);
+		Stats hlrStats = new Stats(25,5,8,10,15,7);
 		
 		Action gobpunch = new Action();
 		gobpunch.setName("Goblin Punch");
-		gobpunch.setTargets(TGT.ENEMY, TGT.NOTSELF, TGT.ALIVE);
 		
 		Action warpunch = new Action();
 		warpunch.setName("Punch");
-		warpunch.setTargets(TGT.ENEMY, TGT.NOTSELF, TGT.ALIVE);
 		
 		Action magspell = new Action();
 		magspell.setName("Spell");
 		magspell.setAstat(STS.MATK.getValue());
 		magspell.setDstat(STS.MDEF.getValue());
-		magspell.setTstat(STS.DEF);
-		magspell.setTargets(TGT.ENEMY, TGT.NOTSELF, TGT.ALIVE);
 		
 		Action hlrspell = new Action();
 		hlrspell.setName("Heal");
 		hlrspell.setAstat(STS.MDEF.getValue());
 		hlrspell.setDstat(STS.NA.getValue());
-		hlrspell.setFocus(TGT.SPREAD);
-		hlrspell.setElement(ELM.HEAL);
-		hlrspell.setTargets(TGT.ALLY, TGT.SELF, TGT.ALIVE);
-		
 		
 		monster1.setName("Goblin1");
 		monster1.setStats(gob1Stats);
@@ -112,6 +103,7 @@ public class BattleServiceTest {
 		player4.setStats(hlrStats);
 		player4.setAction(hlrspell);
 		
+		fs = FieldService.getField();
 		fs.addCombatant(player1);
 		fs.addCombatant(player2);
 		fs.addCombatant(player3);
@@ -124,58 +116,89 @@ public class BattleServiceTest {
 		for (int index = 0; index < fs.numberOfCombatants(); index++) {
 			fs.getCombatant(index).setReady(true);
 		}
-		
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	
-	@Test
-	public void VictoryCheckNone() {
-		bs.initialize();
-		bs.victoryCheck();
-		assertEquals("There should be no victory yet.", 0 , bs.getStatus());
-	}
-	
-	@Test
-	public void VictoryCheckSucess() {
-		bs.initialize();
-		monster1.setStat(STS.HP, 0);
-		monster2.setStat(STS.HP, 0);
-		monster3.setStat(STS.HP, 0);
-		monster4.setStat(STS.HP, 0);
-		bs.victoryCheck();
-		assertEquals("Monsters Defeated, Victory!", 1 , bs.getStatus());
-	}
-	
-	@Test
-	public void VictoryCheckFail() {
-		bs.initialize();
-		player1.setStat(STS.HP, 0);
-		player2.setStat(STS.HP, 0);
-		player3.setStat(STS.HP, 0);
-		player4.setStat(STS.HP, 0);
-		bs.victoryCheck();
-		assertEquals("Monsters Defeated, Victory!", -1 , bs.getStatus());
-	}
-	
 	@Test
 	public void testNext() {
 		assertEquals("Should return a valid player with highest speed: healer.", "Healer", fs.getCombatant(fs.next()).getName());
 	}
+
+	@Test
+	public void testNextAgain() {
+		player4.setReady(false);
+		assertEquals("Healer has taken a turn. Who's next?", "Warrior", fs.getCombatant(fs.next()).getName());
+	}
 	
 	@Test
-	public void BattleRoundCheck() {
-		for (int rounds = 0; rounds < 3; rounds++) {
-			System.out.println(bs.round());
-			for (int index = 0; index < fs.numberOfCombatants(); index++) {
-				fs.getCombatant(index).setReady(true);
-			}
-		}
-		System.out.println("Victory Status: " + bs.getStatus());
-		assertEquals("Victory Status", 0 , bs.getStatus());
+	public void testNextAgainAgain() {
+		player4.setReady(false);
+		player1.setStat(STS.HP, 0);
+		assertEquals("Ack! Warrior is dead. Who's next?", "Mage", fs.getCombatant(fs.next()).getName());
 	}
-
+	
+	@Test
+	public void testGetTargetDeadOnly() {
+		expected.add(0);
+		player1.setStat(STS.HP, 0);
+		TargetParams params = new TargetParams(TGT.ALLY.getValue(),TGT.NOTSELF.getValue(), TGT.DEADONLY.getValue());
+		List<Integer> result = fs.getTargets(player4.getFid(), params);
+		System.out.println(result);
+		assertEquals("Healer wants to revive Warrior, check targets.", expected, result);
+	}
+	
+	@Test
+	public void testGetTargetEnemyParty() {
+		expected.add(4);
+		expected.add(5);
+		expected.add(6);
+		expected.add(7);
+		TargetParams params = new TargetParams(TGT.ENEMY.getValue(),TGT.NOTSELF.getValue(), TGT.ALIVE.getValue());
+		List<Integer> result = fs.getTargets(player2.getFid(), params);
+		System.out.println(result);
+		assertEquals("Mage wants to use a spell on the whole enemy party, check targets.", expected, result);
+	}
+	
+	@Test
+	public void testGetTargetEnemyPartyWithDead() {
+		expected.add(4);
+		expected.add(6);
+		expected.add(7);
+		monster2.setStat(STS.HP, 0);
+		TargetParams params = new TargetParams(TGT.ENEMY.getValue(),TGT.NOTSELF.getValue(), TGT.ALIVE.getValue());
+		List<Integer> result = fs.getTargets(player2.getFid(), params);
+		System.out.println(result);
+		assertEquals("Mage wants to use a spell on the whole enemy party, check targets.", expected, result);
+	}
+	
+	@Test
+	public void testGetTargetAll() {
+		expected.add(0);
+		expected.add(1);
+		expected.add(2);
+		expected.add(3);
+		expected.add(6);
+		expected.add(7);
+		monster2.setStat(STS.HP, 0);
+		TargetParams params = new TargetParams(TGT.ALL.getValue(),TGT.NOTSELF.getValue(), TGT.ALIVE.getValue());
+		List<Integer> result = fs.getTargets(monster1.getFid(), params);
+		System.out.println(result);
+		assertEquals("Goblin1 wants revenge and uses spell targeting everyone.", expected, result);
+	}
+	
+	@Test
+	public void testGetTargetAlly() {
+		expected.add(0);
+		expected.add(1);
+		expected.add(2);
+		expected.add(3);
+		TargetParams params = new TargetParams(TGT.ALLY.getValue(),TGT.SELF.getValue(), TGT.ALIVE.getValue());
+		List<Integer> result = fs.getTargets(player4.getFid(), params);
+		System.out.println(result);
+		assertEquals("Healer wants to restore party HP.", expected, result);
+	}
+	
 }
