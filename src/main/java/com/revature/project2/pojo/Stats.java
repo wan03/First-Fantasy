@@ -56,4 +56,13 @@ public class Stats {
 	public Stats() {
 		Arrays.fill(stats, 0);
 	}
+	
+	public Stats(int hp, int atk, int def, int matk, int mdef, int spd) {
+		this.setStat(STS.HP.getValue(), hp);
+		this.setStat(STS.ATK.getValue(), atk);
+		this.setStat(STS.DEF.getValue(), def);
+		this.setStat(STS.MATK.getValue(), matk);
+		this.setStat(STS.MDEF.getValue(), mdef);
+		this.setStat(STS.SPD.getValue(), spd);
+	}
 }
