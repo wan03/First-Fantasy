@@ -12,6 +12,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
 import { DungeonComponent } from './dungeon/dungeon.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DungeonComponent } from './dungeon/dungeon.component';
     NavbarComponent,
     CarouselComponent,
     RegistrationFormComponent,
-    DungeonComponent
+    DungeonComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
