@@ -5,7 +5,7 @@ import com.revature.project2.util.STS;
 
 public abstract class Actor {
 	
-	private int  id;
+	protected int  id;
 	protected int fid;				// The Character's Field ID - their location in the Field Service Combatants array.
 	protected String name;
 	//private String cclass;
@@ -16,7 +16,7 @@ public abstract class Actor {
 	//private Spells[] spell;
 	protected Action action;			// The prepared action the Actor will take this round.
 	protected String party;
-	private boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
+	protected boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
 	
 	FieldService fs;
 	
@@ -153,8 +153,10 @@ public abstract class Actor {
 	
 	public Actor() {
 		super();
-		this.stats = new Stats();
+		this.id = 0;
+		this.fid = 0;
 		this.name = "Character";
+		this.stats = new Stats();
 		this.action = new Action();
 		this.party = "None";
 		this.ready = false;
