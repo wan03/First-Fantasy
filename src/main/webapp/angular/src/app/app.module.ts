@@ -11,6 +11,7 @@ import { MainMenuComponent } from "./main-menu/main-menu.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
+import { DungeonComponent } from './dungeon/dungeon.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegistrationFormComponent } from "./registration-form/registration-form
     MainMenuComponent,
     NavbarComponent,
     CarouselComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    DungeonComponent
   ],
   imports: [
     BrowserModule,
