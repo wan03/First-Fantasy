@@ -8,7 +8,7 @@ public class Player extends Actor {
 		super();
 		this.id = id;
 		this.fid = 0;
-		this.name = party;
+		this.name = name;
 		this.stats = stats;
 		this.action = new Action();
 		this.party = party;
