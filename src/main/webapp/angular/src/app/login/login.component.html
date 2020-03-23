@@ -1,6 +1,43 @@
-<h2>Login</h2>
-<input  [(ngModel)]="u.username"/>
-<br>
-<input type="password" [(ngModel)]="u.password"/>
-<br>
-<button (click)="sendLogin()">Login</button>
+<div class="container mt-5">
+  <h2 class="mb-3">Login</h2>
+  <form [formGroup]="loginForm">
+    <label for="email">Email address:</label>
+    <input
+      required
+      type="email"
+      class="form-control mb-2"
+      id="email"
+      formControlName="email"
+    />
+    <div
+      *ngIf="email.invalid && (email.dirty || email.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="email.errors.required">
+        Email is required.
+      </div>
+      <div *ngIf="email.errors.email">
+        Email must be properly formatted.
+      </div>
+    </div>
+    <label for="password">Password:</label>
+    <input
+      required
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+    />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="password.errors.required">
+        Password is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" (click)="sendLogin()">
+      Login
+    </button>
+  </form>
+</div>
