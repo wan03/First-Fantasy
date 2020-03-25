@@ -2,6 +2,10 @@ package com.revature.project2.service.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -79,6 +83,12 @@ public class BattleServiceTest {
 		hlrspell.setElement(ELM.HEAL);
 		hlrspell.setTargets(TGT.ALLY, TGT.SELF, TGT.ALIVE);
 		
+		List<Integer> wartarg = new ArrayList<Integer>(Arrays.asList(4,5));
+		List<Integer> magtarg = new ArrayList<Integer>(Arrays.asList(6,7));
+		List<Integer> grdtarg = new ArrayList<Integer>(Arrays.asList(4,5,6,7));
+		List<Integer> hlrtarg = new ArrayList<Integer>(Arrays.asList(0,1,2,3));
+		
+
 		
 		monster1.setName("Goblin1");
 		monster1.setStats(gob1Stats);
@@ -99,18 +109,22 @@ public class BattleServiceTest {
 		player1.setName("Warrior");
 		player1.setStats(warStats);
 		player1.setAction(warpunch);
+		player1.setTargets(wartarg);
 		
 		player2.setName("Mage");
 		player2.setStats(magStats);
 		player2.setAction(magspell);
+		player2.setTargets(magtarg);
 		
 		player3.setName("Guard");
 		player3.setStats(grdStats);
 		player3.setAction(warpunch);
+		player3.setTargets(grdtarg);
 		
 		player4.setName("Healer");
 		player4.setStats(hlrStats);
 		player4.setAction(hlrspell);
+		player4.setTargets(hlrtarg);
 		
 		fs.addCombatant(player1);
 		fs.addCombatant(player2);
