@@ -1,34 +1,41 @@
-import { Component, OnInit, Input, Testability } from '@angular/core';
-import { User } from '../user-class';
-import { USER } from '../mock-users';
-import { LoginService } from './login.service';
+import { Component, OnInit, Input, Testability } from "@angular/core";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { User } from "../user-class";
+import { USER } from "../mock-users";
+import { LoginService } from "./login.service";
 
 @Component({
-  selector: 'app-login',
-  template: `
-              <input type="text" class="form-control" (key)="username"/>
-              <br>
-              <input type="password" class="form-control" (key)="password"/>
-              <br>
-              <button (click)="getLogin($event)">Login</button>
-            `,
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService) { }
-  ngOnInit(): void {
-  }
+  constructor(private loginService: LoginService) {}
+  ngOnInit(): void {}
 
   // Variables
-  u: User = {
-    username: '',
-    password: ''
-  };
-  
+  loginForm = new FormGroup({
+    email: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", Validators.required)
+  });
+
+  get email() {
+    return this.loginForm.get("email");
+  }
+  get password() {
+    return this.loginForm.get("password");
+  }
 
   // Methods
-  sendLogin(): void{
-    this.loginService.sendLogin(this.u);
+  sendLogin(): void {
+    let email = <unknown>this.loginForm.get("email");
+    let password = <unknown>this.loginForm.get("password");
+    let u: User = {
+      username: "",
+      password: ""
+    };
+    u.username = <string>email;
+    u.password = <string>password;
+    this.loginService.sendLogin(u);
   }
 }
