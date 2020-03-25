@@ -1,11 +1,14 @@
 package com.revature.project2.pojo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.revature.project2.service.FieldService;
 import com.revature.project2.util.STS;
 
 public abstract class Actor {
 	
-	protected int  id;
+	protected int id;
 	protected int fid;				// The Character's Field ID - their location in the Field Service Combatants array.
 	protected String name;
 	//private String cclass;
@@ -17,6 +20,7 @@ public abstract class Actor {
 	protected Action action;			// The prepared action the Actor will take this round.
 	protected String party;
 	protected boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
+	protected List<Integer> targets;
 	
 	FieldService fs;
 	
@@ -97,6 +101,15 @@ public abstract class Actor {
 		this.party = party;
 	}
 	
+	
+	public List<Integer> getTargets() {
+		return targets;
+	}
+
+	public void setTargets(List<Integer> targets) {
+		this.targets = targets;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -161,6 +174,7 @@ public abstract class Actor {
 		this.party = "None";
 		this.ready = false;
 		this.fs = FieldService.getField();
+		this.targets = new ArrayList<Integer>();
 	}
 
 }
