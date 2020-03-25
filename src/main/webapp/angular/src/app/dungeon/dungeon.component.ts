@@ -10,6 +10,26 @@ export class DungeonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementById("submitBtn").setAttribute("disabled", "true");
   }
 
+  warriorAction(){
+
+  }
+
+  mageAction(){
+    
+  }
+
+  guardAction(){
+    
+  }
+
+  healerAction(){
+    
+  }
+
+  submitFunc(){
+    
+  }
 }
