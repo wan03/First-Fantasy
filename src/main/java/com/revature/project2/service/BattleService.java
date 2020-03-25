@@ -60,12 +60,15 @@ public class BattleService {
 		System.out.println("START OF NEW ROUND");
 		//System.out.println(fs.next());
 		
-		while(fs.next() >= 0) { // while there is a next character (who is not dead or has moved.)
+		while(fs.next() >= 0 && status == 0) { // while there is a next character (who is not dead or has moved.)
 			//System.out.println("In While Loop: " + fs.getCombatant(fs.next()).getName());
 			Actor actor = fs.getCombatant(fs.next());
 			
+			if(actor.getParty().equals("Heroes")) {
+				actChosen(actor);					// The Actor will use its own stored action if belonging to the Heroes party.
+			} else {
 			actAI(actor);		// The actor will automatically use its own action to call on fs to find targets and execute its action.
-			
+			}
 			battlelog += "\n";
 			// Post-Turn Calculations
 			//System.out.println(""); //Put a space between lines to make each turn more readable.
@@ -100,6 +103,31 @@ public class BattleService {
 				//System.out.println(targets.get(index));
 				defend(action, fs.getCombatant(targets.get(index)));
 			}
+		}
+	}
+	
+	public void actChosen(Actor user) {
+		StringBuilder attacklog = new StringBuilder();
+		Action action = user.getAction();
+		
+		List<Integer> targets = fs.getTargets(user.getFid(), action.getTargets()); 	// Retrieve a list of possible targets from the field.
+		
+		action.setAmount(user.getStat(action.getAstat()));
+		
+		attacklog.append(user.getName());
+		attacklog.append(" used ");
+		attacklog.append(action.getName());
+		attacklog.append("!\n");
+		
+		battlelog += attacklog.toString();
+		
+			for(int index = 0; index < user.getTargets().size(); index++) {
+				if(targets.contains(user.getTargets().get(index))) { // If this is a valid target...
+					defend(action, fs.getCombatant(user.getTargets().get(index)));
+				} else {
+					battlelog += "Invalid Target!\n";
+				}
+				
 		}
 	}
 	

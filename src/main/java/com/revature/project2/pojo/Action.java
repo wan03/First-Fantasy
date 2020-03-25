@@ -9,7 +9,7 @@ public class Action {
 	private String name;			// Name of the Action.
 	private int user;				// Which character is using it (Combatant Index)
 	private String uName;			// The name of the character using it.
-	TargetParams targets;			// Which characters are being targeted by it.
+	TargetParams targets;			// The Conditions determining valid Targets.
 	private int amount;				// The amount of offending damage to be applied to the defender.
 	private int astat;				// The stat which the offending damage is calculated from.	(Attack by default.)
 	private int dstat;				// The stat which defends against the offending damage.		(Defense by default.)
