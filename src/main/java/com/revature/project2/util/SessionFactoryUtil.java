@@ -13,17 +13,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryUtil {
 
 private static SessionFactory sf;
-	
 	private static SessionFactoryUtil sfu;
-	
 	private static final String USERNAME = System.getenv("PROJECT2_USERNAME");
-	
-	private static final String PASSWORD = System.getenv("PROJECT2_PASSWORD");
-	
-	private static final String URL = "jdbc:postgresql://" + System.getenv("PROJECT2_URL") + ":5432/postgres?";
-	
-	private static String schema = "dungeon";
-	
+	//private static final String PASSWORD = System.getenv("PROJECT2_PASSWORD");
+	private static final String PASSWORD = "project2!Revature"; // Must be hard-coded for unknown reasons.
+	private static final String URL = System.getenv("PROJECT2_URL");
+	private static String schema = "postgres";// This is the name in the AWS RDS
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
 			sfu = new SessionFactoryUtil();
@@ -38,7 +33,7 @@ private static SessionFactory sf;
 			settings.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
 			settings.put("hibernate.default_schema", schema);
 			settings.put("show_sql", "true");
-			settings.put("connection.pool_size", "1");
+			settings.put("connection.pool_size", "5");
 			settings.put("hibernate.connection.url", URL);
 			settings.put("hibernate.connection.username", USERNAME);
 			settings.put("hibernate.connection.password", PASSWORD);
@@ -56,11 +51,11 @@ private static SessionFactory sf;
 	}
 	
 	public SessionFactory getSessionFactory() {
-		return this.sf;
+		return sf;
 	}
 
 	public static void setConfigFileLocationToTest() {
-		schema = "dungeon_test";
+		schema = "project2_test";
 	}
 	
 }
