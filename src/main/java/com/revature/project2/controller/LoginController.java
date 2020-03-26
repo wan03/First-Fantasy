@@ -25,7 +25,7 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<HttpStatus> login(@RequestBody User user) {
-		User authUser = auth.validateUser(user.getName(), user.getPassword());
+		User authUser = auth.validateUser(user.getEmail(), user.getPassword());
 		if (authUser == null) {
 			return new ResponseEntity<HttpStatus>(HttpStatus.UNAUTHORIZED);
 		} else {
