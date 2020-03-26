@@ -20,9 +20,9 @@ private static SessionFactory sf;
 	
 	private static final String PASSWORD = System.getenv("PROJECT2_PASSWORD");
 	
-	private static final String URL = System.getenv("PROJECT2_URL");
+	private static final String URL = "jdbc:postgresql://" + System.getenv("PROJECT2_URL") + ":5432/postgres?";
 	
-	private static String schema = "\"java-dungeon\"";
+	private static String schema = "dungeon";
 	
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
@@ -60,7 +60,7 @@ private static SessionFactory sf;
 	}
 
 	public static void setConfigFileLocationToTest() {
-		schema = "\"java-test-dungeon\"";
+		schema = "dungeon_test";
 	}
 	
 }
