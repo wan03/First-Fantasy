@@ -1,14 +1,9 @@
 package com.revature.project2.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.stereotype.Repository;
 
 @Entity
 @Table(name="usr")
