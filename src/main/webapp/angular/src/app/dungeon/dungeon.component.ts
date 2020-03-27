@@ -14,9 +14,10 @@ export class DungeonComponent implements OnInit {
 
   ngOnInit(): void {
     //document.getElementById("submitBtn").setAttribute("disabled", "true");
-    //this.dungeonService.getPlayer().subscribe(PLAYER => this.PLAYER = PLAYER)
+    this.dungeonService.getPlayer().subscribe(player => this.player = player)
   }
 
+  player = PLAYER;
 
 
   // submitFunc(action){
@@ -27,7 +28,7 @@ export class DungeonComponent implements OnInit {
   warriorAction(){
     // this.player.targets = [1];
     // this.dungeonService.attack(this.player);
-     this.dungeonService.attack(PLAYER);
+     this.dungeonService.attack(this.player);
   }
 
   mageAction(){

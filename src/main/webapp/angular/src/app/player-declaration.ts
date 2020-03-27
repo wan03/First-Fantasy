@@ -1,20 +1,12 @@
-export class Player {
+export class TargetParams {
     constructor(
-        public fid: number,
-        public name: string,
-        public stats: number[],
-        public action: Action,
-        public party: string,
-        public ready: boolean,
-        public targets: number[]
-    ) { 
-        this.fid = fid;
-        this.name = name;
-        this.stats = stats;
-        this.action = action;
+        public party: number,
+        public self: number,
+        public dead: number
+    ) {
         this.party = party;
-        this.ready = ready;
-        this.targets = targets;
+        this.self = self;
+        this.dead = dead;
     }
 }
 
@@ -41,18 +33,25 @@ export class Action {
         this.tstat = tstat;
         this.element = element;
         this.focus = focus;
-
     }
 }
 
-export class TargetParams {
+export class Player {
     constructor(
-        public party: number,
-        public self: number,
-        public dead: number
-    ) {
+        public fid: number,
+        public name: string,
+        public stats: number[],
+        public action: Action,
+        public party: string,
+        public ready: boolean,
+        public targets: number[]
+    ) { 
+        this.fid = fid;
+        this.name = name;
+        this.stats = stats;
+        this.action = action;
         this.party = party;
-        this.self = self;
-        this.dead = dead;
+        this.ready = ready;
+        this.targets = targets;
     }
 }

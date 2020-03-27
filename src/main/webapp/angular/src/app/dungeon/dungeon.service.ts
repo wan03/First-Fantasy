@@ -9,15 +9,6 @@ import { Observable } from 'rxjs';
 export class DungeonService {
 
   constructor(private http: HttpClient) { }
-  // constructor(private http: HttpClient) {
-  //  }
-
-  // var action = {
-  //   hero: "",
-  //   enemy: ""
-  // };
-
-
 
   url = "http://localhost:8080/project2/dungeon";
 
