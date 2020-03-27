@@ -2,10 +2,13 @@ package com.revature.project2.pojo;
 
 import java.util.Arrays;
 
+import javax.persistence.Embeddable;
+
 import com.revature.project2.util.STS;
 
+@Embeddable
 public class Stats {
-
+	
 	private int stats[] = new int[11];
 	
 	public int getStat(STS stat) {

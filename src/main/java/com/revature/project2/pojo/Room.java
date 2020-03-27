@@ -9,7 +9,10 @@ public class Room {
 	private static final int MAX_ENEMIES = 6;
 	
 	String name;			// non-essential - should there be a need to refer to a room.
+	
 	int type;				// Room Type. (Enumeration?) 0 is a Monster Room (default.)
+	
+	
 	List<Monster> enemies;
 	//Loot?
 	//Traps?

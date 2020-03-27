@@ -17,8 +17,8 @@ public class AuthenticationImpl implements Authentication{
 		this.userDao = userDao;
 	}
 	
-	public User validateUser(String username, String password) {
-		User user = userDao.getUserByName(username);
+	public User validateUser(String email, String password) {
+		User user = userDao.getUserByEmail(email);
 		if (user != null && user.getPassword().equals(password)) {
 			return user;
 		}

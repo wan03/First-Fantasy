@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DungeonService } from './dungeon.service';
-import { Player } from '../Player';
+import { Player } from '../player-declaration';
+import { PLAYER } from '../mock-player';
 
 @Component({
   selector: 'app-dungeon',
@@ -13,34 +14,61 @@ export class DungeonComponent implements OnInit {
 
   ngOnInit(): void {
     //document.getElementById("submitBtn").setAttribute("disabled", "true");
-    this.dungeonService.getPlayer().subscribe(player => this.player = player)
+    this.dungeonService.getPlayerList().subscribe(playerList => this.playerList = playerList);
+    //this.dungeonService.getPlayer().subscribe(player => this.player = player)
   }
 
-  player: Player;
-
-  // submitFunc(action){
-  //   this.dungeonService.submitFunc();
-  // }
+  player = PLAYER;
+  playerList =[];
+  allReady = [false,false,false,false];
 
 
-  warriorAction(){
-    this.player.targets = [1];
-    this.dungeonService.attack(this.player);
+   submitFunc(){
+     console.log("submitFunc()");
+     this.dungeonService.postPlayerList(this.playerList);
+   }
+
+
+  warriorAction(player){
+    // this.player.targets = [1];
+    // this.dungeonService.attack(this.player);
+    // this.dungeonService.attack(this.player);
+    this.playerList.push(player);
+    console.log(this.playerList);
+    // this.allReady[0] = true;
+    // document.getElementById("warriorActionBtn").setAttribute("disabled", "true");
+    // if(this.allReady.every((currentValue) => true))
+    //   document.getElementById("submitBtn").setAttribute("disabled", "false");
   }
 
-  mageAction(){
-    this.player.targets = [1];
-    this.dungeonService.attack(this.player);
+  mageAction(player){
+    // this.player.targets = [1];
+    // this.dungeonService.attack(this.player);
+    //this.playerList.push(player);
+    // this.allReady[1] = true;
+    // document.getElementById("mageActionBtn").setAttribute("disabled", "true");
+    // if(this.allReady.every((currentValue) => true))
+    //   document.getElementById("submitBtn").setAttribute("disabled", "false");
   }
 
-  guardAction(){
-    this.player.targets = [1];
-    this.dungeonService.attack(this.player);
+  guardAction(player){
+    // this.player.targets = [1];
+    // this.dungeonService.attack(this.player);
+    //this.playerList.push(player);
+    // this.allReady[2] = true;
+    // document.getElementById("guardActionBtn").setAttribute("disabled", "true");
+    // if(this.allReady.every((currentValue) => true))
+    //   document.getElementById("submitBtn").setAttribute("disabled", "false");
   }
 
-  healerAction(){
-    this.player.targets = [1];
-    this.dungeonService.attack(this.player);
+  healerAction(player){
+    // this.player.targets = [1];
+    // this.dungeonService.attack(this.player);
+    //this.playerList.push(player);
+    // this.allReady[3] = true;
+    // document.getElementById("healerActionBtn").setAttribute("disabled", "true");
+    // if(this.allReady.every((currentValue) => true))
+    //   document.getElementById("submitBtn").setAttribute("disabled", "false");
   }
 
 }

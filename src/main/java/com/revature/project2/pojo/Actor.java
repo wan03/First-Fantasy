@@ -3,25 +3,50 @@ package com.revature.project2.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import com.revature.project2.service.FieldService;
 import com.revature.project2.util.STS;
 
 public abstract class Actor {
 	
+	@Id
+	@Column(name = "id")
 	protected int id;
+	
+	@Transient
 	protected int fid;				// The Character's Field ID - their location in the Field Service Combatants array.
+	
+	@Column(name = "name")
 	protected String name;
+	
 	//private String cclass;
+	
 	protected Stats stats;
+	
 	//private int exp;
+	
 	//private Buffs[]
+	
 	//private Equipment[] equip;
+	
 	//private Spells[] spell;
+	
+	@Transient
 	protected Action action;			// The prepared action the Actor will take this round.
+	
+	@Column(name = "party")
 	protected String party;
+	
+	@Transient
 	protected boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
+	
+	@Transient
 	protected List<Integer> targets;
 	
+	@Transient
 	FieldService fs;
 	
 	public int getId() {
