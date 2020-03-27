@@ -3,11 +3,11 @@ export class Player {
     constructor(
         public fid: string,
         public name: string,
-        public stats: Int8Array,
+        public stats: number[],
         public action: Action,
         public party: string,
         public ready: boolean,
-        public targets: Int8Array
+        public targets: number[]
     ) { }
 }
 
