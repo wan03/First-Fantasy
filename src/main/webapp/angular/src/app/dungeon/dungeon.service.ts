@@ -18,12 +18,12 @@ export class DungeonService {
 
   //action: {[k: string]: any} = {};
 
-  getPlayer(): Observable <Player[]> {
+  getPlayerList(): Observable <Player[]> {
     return this.http.get<Player[]>(this.url);
   }
 
-  submitFunc(playerList: Player[]){
-    console.log(JSON.stringify(playerList) + " action on submit")
+  postPlayerList(playerList: Player[]){
+    console.log(JSON.stringify(playerList) + " JSON to POST")
     this.http.post(this.url, playerList);
   }
 
