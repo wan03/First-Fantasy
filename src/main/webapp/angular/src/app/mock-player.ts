@@ -24,7 +24,7 @@ export const ACTION = new Action
 export const PLAYER = new Player
     (
         1, //fid
-        "John", //name 
+        "warrior", //name 
          [30,15,10,5,5,5], //stats
         ACTION, //action 
         "Heroes", //party 
@@ -32,75 +32,12 @@ export const PLAYER = new Player
         [1]  //targets 
     )
 
-// export const TARGETPARAMS = new TargetParams
-//      (
-//          1, //party 
-//          1, //self 
-//          0 //dead 
-//      )
 
-// export const ACTION = new Action
-//     (
-//         "attack", //name = name of attack
-//         1, //user 
-//         "warrior", //uName = name of character
-//         TARGETPARAMS, //targets 
-//         0, //amount 
-//         1, //astat 
-//         2, //dstat 
-//         0, //tstat 
-//         0, //element 
-//         0 //focus 
-//     )
-
-// export const PLAYER = new Player
-//     (
-//         1, //fid
-//         "John", //name 
-//          [30,15,10,5,5,5], //stats
-//         ACTION, //action 
-//         "Heroes", //party 
-//         false, //ready 
-//         [1]  //targets 
-//     )
-
-
-
-
-// TargetParams
-// {
-//     "party" = 1,
-//     "self" = 1,
-//     "dead" = 0
-// }
-
-// Action {
-//     "name" = "attack",
-//     "user" = 1,
-//     "uName" = "warrior",
-//     "targets" = [],
-//     "amount" = 0,
-//     "astat" = 1,
-//     "dstat" = 2,
-//     "tstat" = 0,
-//     "element" = 0,
-//     "focus" = 0
-//     }
-
-// Player {
-//     "fid" = 1,
-//     "name" = "John",
-//     "stats" = [30,15,10,5,5,5],
-//     "action" = [],
-//     "party" = "Heroes",
-//     "ready" = false,
-//     "targets" = [1]
-//     }
-
-// TargetParams
+// TargetParams JSON
 // {"party" = 1, "self" = 1, "dead" = 0}
 
-// Action {
+// Action JSON
+// {
 //     "name" = "attack",
 //     "user" = 1,
 //     "uName" = "warrior",
@@ -111,9 +48,10 @@ export const PLAYER = new Player
 //     "tstat" = 0,
 //     "element" = 0,
 //     "focus" = 0
-//     }
+// }
 
-// Player {
+// Player JSON
+// {
 //     "fid" = 1,
 //     "name" = "John",
 //     "stats" = [30,15,10,5,5,5],
@@ -132,4 +70,4 @@ export const PLAYER = new Player
 //     "party" = "Heroes",
 //     "ready" = false,
 //     "targets" = [1]
-//     }
+// }

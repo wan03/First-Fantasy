@@ -16,21 +16,20 @@ export class DungeonService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  action: {[k: string]: any} = {};
+  //action: {[k: string]: any} = {};
 
-  getPlayer(): Observable <Player> {
-
-    return this.http.get<Player>(this.url);
+  getPlayer(): Observable <Player[]> {
+    return this.http.get<Player[]>(this.url);
   }
 
-  submitFunc(player){
-    console.log(JSON.stringify(player) + " action on submit")
-    this.http.post(this.url, player);
+  submitFunc(playerList: Player[]){
+    console.log(JSON.stringify(playerList) + " action on submit")
+    this.http.post(this.url, playerList);
   }
 
   attack (player: Player){
-    console.log(player)
-    this.submitFunc(player)
+    //console.log(player);
+    //this.submitFunc(player)
   }
 
 
