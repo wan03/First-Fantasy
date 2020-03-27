@@ -6,6 +6,7 @@ import com.revature.project2.pojo.Action;
 import com.revature.project2.pojo.Actor;
 import com.revature.project2.util.ELM;
 import com.revature.project2.util.STS;
+import com.revature.project2.service.BattleService;
 
 public class BattleService {
 

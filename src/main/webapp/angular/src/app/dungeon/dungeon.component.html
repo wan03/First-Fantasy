@@ -1,3 +1,4 @@
+<div class="container">
 <div class="card-deck">
 
     <div class="card" style="max-width: 576px;">
@@ -6,30 +7,31 @@
             <div id="dungeonBackground" class="">
                 <!-- <img src="../../assets/BackgroundProject2.png" class="card-img" alt="Battlefield"
                     style="visibility: hidden;"> -->
-                <div class="row">
-                    <div class="col-sm"><img src="../../assets/GoblinCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/GoblinCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/GoblinCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/GoblinCube.png" style="max-width: 64px;"></div>
+                <div class="row pt-3 pb-5">
+                    <div class="col-3"><img id="goblin1" src="../../assets/GoblinCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="goblin2" src="../../assets/GoblinCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="goblin2" src="../../assets/GoblinCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="goblin2" src="../../assets/GoblinCube.png" style="max-width: 80px;"></div>
                 </div>
-                <div class="row">
-                    <div class="col-sm"><img src="../../assets/WarriorCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/MageCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/GuardCube.png" style="max-width: 64px;"></div>
-                    <div class="col-sm"><img src="../../assets/HealerCube.png" style="max-width: 64px;"></div>
+                <div class="row mt-5 pt-5">
+                    <div class="col-3"><img id="warriorId" src="../../assets/WarriorCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="mageId" src="../../assets/MageCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="guardId" src="../../assets/GuardCube.png" style="max-width: 80px;"></div>
+                    <div class="col-3"><img id="healerId" src="../../assets/HealerCube.png" style="max-width: 80px;"></div>
                 </div>
             </div>
-
         </div>
+
         <div class="card-footer">
             <div class="row">
-                <a id="warriorActionBtn" (click)="warriorAction()" class="btn btn-primary col-sm-3">Action!</a>
-                <a id="mageActionBtn" (click)="mageAction()" class="btn btn-primary col-sm-3">Action!</a>
-                <a id="guardActionBtn" (click)="guardAction()" class="btn btn-primary col-sm-3">Action!</a>
-                <a id="healerAction" (click)="healerAction()" class="btn btn-primary col-sm-3">Action!</a>
+                <a id="warriorActionBtn" (click)="warriorAction()" class="btn btn-primary col-3" style="max-width: 8rem;">Attack</a>
+                <a id="mageActionBtn" (click)="mageAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</a>
+                <a id="guardActionBtn" (click)="guardAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</a>
+                <a id="healerAction" (click)="healerAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</a>
             </div>
             <div class=row>
-                <button id="submitBtn" (click)="submitFunc()" class="btn btn-primary btn-lg btn-block">Submit!</button>
+                <!-- <button id="submitBtn" (click)="submitFunc()" class="btn btn-primary btn-lg btn-block">Submit!</button> -->
+                <button id="submitBtn" class="btn btn-primary btn-lg btn-block mt-2">Submit!</button>
             </div>
         </div>
     </div>
@@ -40,4 +42,5 @@
         </div>
     </div>
 
+</div>
 </div>
