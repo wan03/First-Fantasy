@@ -1,12 +1,22 @@
 package com.revature.project2.pojo;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="usr")
 public class User {
 	
+	@Column(name="name")
 	private String name;		// The name/nickname that the user wants to be addressed as. non-essential.
+	
+	@Id
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="password")
 	private String password;
 	
 	public String getName() {
