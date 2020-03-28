@@ -21,7 +21,7 @@ export class DungeonComponent implements OnInit {
 
   playerList: Player[] = [PLAYER];
   currentHero: string = "";
-  //allReady = [false,false,false,false];
+  allReady = [false,false,false,false];
 
 
   // Get hero info
