@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
     };
     u.username = <string>email;
     u.password = <string>password;
-    this.loginService.sendLogin(u);
+    this.loginService.putInfo(u);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { RegistrationFormService } from './registration-form.service';
 
 @Component({
   selector: "app-registration-form",
@@ -7,7 +8,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ["./registration-form.component.css"]
 })
 export class RegistrationFormComponent implements OnInit {
-  constructor() {}
+  constructor(private registrationFormService: RegistrationFormService) {}
 
   ngOnInit(): void {}
 
@@ -26,7 +27,7 @@ export class RegistrationFormComponent implements OnInit {
     return this.registrationForm.get("password");
   }
   onSubmit() {
-    // TODO: Send to back end
     console.warn(this.registrationForm.value);
+    this.registrationFormService.putInfo(this.registrationForm);
   }
 }
