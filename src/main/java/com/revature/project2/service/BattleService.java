@@ -86,8 +86,6 @@ public class BattleService {
 		List<Integer> targets = fs.getTargets(user.getFid(), action.getTargets()); 	// Retrieve a list of possible targets from the field.
 		action.setAmount(user.getStat(action.getAstat()));
 		
-		//System.out.println(user.getName() + " used " + action.getName() + "!");		// Declare the attacker's intent to execute an action.
-		//System.out.println("Targets: " + targets);
 		attacklog.append(user.getName());
 		attacklog.append(" used ");
 		attacklog.append(action.getName());
@@ -157,9 +155,6 @@ public class BattleService {
 			deflog.append(apply);
 			if(action.getTstat() == STS.HP.getValue()) { deflog.append(" health!"); }
 			else { deflog.append( " " + STS.valueOf(action.getTstat()) + "!");}
-			//System.out.println(defender.getName() + " recovered " 
-			//+ apply + " damage! " + STS.valueOf(action.getTstat()) 
-			//+ "(" + defender.getStat(action.getTstat()) + ")");	
 		} else {
 			current -= apply;														// otherwise, deduct.
 			defender.setStat(action.getTstat(), current);							// apply the calculated change.
@@ -174,11 +169,6 @@ public class BattleService {
 				deflog.append(apply);
 				deflog.append(" " + STS.valueOf(action.getTstat()) + "!");
 				}
-			
-			// Declare the result of the action on the defender.
-			//System.out.println(defender.getName() + " took " 
-			//+ apply + " damage! " + STS.valueOf(action.getTstat()) 
-			//+ "(" + defender.getStat(action.getTstat()) + ")");
 		}
 		
 		deflog.append(" (");

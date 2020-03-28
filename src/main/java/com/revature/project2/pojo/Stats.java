@@ -169,27 +169,27 @@ public class Stats {
 	public void setStat(int stat, int value) {
 		switch (stat) {
 		case 0:
-			this.hp = value;
+			{this.hp = value; break;}
 		case 1:
-			this.atk = value;
+			{this.atk = value; break;}
 		case 2:
-			this.def = value;
+			{this.def = value; break;}
 		case 3:
-			this.matk = value;
+			{this.matk = value; break;}
 		case 4:
-			this.mdef = value;
+			{this.mdef = value; break;}
 		case 5:
-			this.spd = value;
+			{this.spd = value; break;}
 		case 6:
-			this.acc = value;
+			{this.acc = value; break;}
 		case 7:
-			this.evd = value;
+			{this.evd = value; break;}
 		case 8:
-			this.crit = value;
+			{this.crit = value; break;}
 		case 9:
-			this.chr = value;
+			{this.chr = value; break;}
 		case 10:
-			this.dex = value;
+			{this.dex = value; break;}
 		}
 	}
 
@@ -290,7 +290,4 @@ public class Stats {
 	public Stats() {
 		super();
 	}
-	
-	
-
 }
