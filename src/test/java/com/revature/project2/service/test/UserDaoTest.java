@@ -53,23 +53,23 @@ public class UserDaoTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void getUserByNameTest() {
-		when(sf.openSession()).thenReturn(sess);
-		when(sess.get(User.class, "randomName")).thenReturn(user);
-		userDao.setSf(sf);
-		System.out.println(user.getName());
-		assertEquals("should return expected user", user, userDao.getUserByName(user.getName()));
-	}
+//	@Test
+//	public void getUserByNameTest() {
+//		when(sf.openSession()).thenReturn(sess);
+//		when(sess.get(User.class, "randomName")).thenReturn(user);
+//		userDao.setSf(sf);
+//		System.out.println(user.getName());
+//		assertEquals("should return expected user", user, userDao.getUserByName(user.getName()));
+//	}
 	
-	@Test
-	public void getUserByEmailTest() {
-		when(sf.openSession()).thenReturn(sess);
-		when(sess.get(User.class, "randomEmail@email.com")).thenReturn(user);
-		userDao.setSf(sf);
-		System.out.println(user.getEmail());
-		assertEquals("should return expected user", user, userDao.getUserByName(user.getEmail()));
-	}
+//	@Test
+//	public void getUserByEmailTest() {
+//		when(sf.openSession()).thenReturn(sess);
+//		when(sess.get(User.class, "randomEmail@email.com")).thenReturn(user);
+//		userDao.setSf(sf);
+//		System.out.println(user.getEmail());
+//		assertEquals("should return expected user", user, userDao.getUserByName(user.getEmail()));
+//	}
 	
 	@Test
 	public void addNewUserTest() throws UserInsertionException {
