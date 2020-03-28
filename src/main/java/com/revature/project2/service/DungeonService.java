@@ -41,9 +41,13 @@ public class DungeonService {
 	}
 
 	public BattleDTO playRound(List<Actor> update) {
-		log.trace("playRound(List<Actor>");
+		log.trace("playRound(List<Actor>)");
 	        fs.setCombatants(update);
-	        bs.round();
-	        return new BattleDTO (fs.getCombatants(),bs.getStatus(),bs.toString());
+	        List<Actor> actorList = fs.getCombatants();
+	        for(Actor actor : actorList)
+	        	System.out.println(actor);
+	        String battleLog = bs.round();
+	        log.debug(battleLog);
+	        return new BattleDTO (fs.getCombatants(),bs.getStatus(),battleLog);
 	}
 }
