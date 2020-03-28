@@ -45,7 +45,7 @@ public class MonsterDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		monster = new Monster(1, "Name", new Stats(), "Party");
+		//monster = new Monster(1, "Name", new Stats(), "Party");
 	}
 
 	@After

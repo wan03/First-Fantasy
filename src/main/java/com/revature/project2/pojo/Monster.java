@@ -1,15 +1,10 @@
 package com.revature.project2.pojo;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import com.revature.project2.service.FieldService;
 
-@Entity
-@Table(name = "monster")
 public class Monster extends Actor{
 	
-	public Monster (int id, String name, Stats stats, String party ) {
+	/*public Monster (int id, String name, Stats stats, String party ) {
 		super();
 		this.id = id;
 		this.fid = 0;
@@ -25,6 +20,6 @@ public class Monster extends Actor{
 		super();
 		this.name = "Monster";
 		this.party = "Monsters";
-	}
+	}*/
 	
 }

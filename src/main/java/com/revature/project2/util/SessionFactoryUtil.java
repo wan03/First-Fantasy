@@ -42,8 +42,8 @@ private static SessionFactory sf;
 			
 			StandardServiceRegistry standardRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
 			Metadata metadata = new MetadataSources(standardRegistry)
-					//.addAnnotatedClass(com.revature.domain.Car.class)
-					//.addAnnotatedClass(com.revature.domain.User.class)
+					.addAnnotatedClass(com.revature.project2.pojo.User.class)
+					.addAnnotatedClass(com.revature.project2.pojo.Actor.class)
 					.getMetadataBuilder()
 					.applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
 					.build();
