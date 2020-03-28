@@ -36,6 +36,17 @@ export class DungeonService {
     //this.submitFunc(player)
   //}
 
+//   public clone(): any {
+//     let cloneObj = new (<any>this.constructor());
+//     for (let attribut in this) {
+//         if (typeof this[attribut] === "object") {
+//             cloneObj[attribut] = this[attribut].clone();
+//         } else {
+//             cloneObj[attribut] = this[attribut];
+//         }
+//     }
+//     return cloneObj;
+// }
 
 
 

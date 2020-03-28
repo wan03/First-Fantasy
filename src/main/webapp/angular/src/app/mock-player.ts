@@ -51,13 +51,49 @@ export const PLAYER = new Player
         true //alive
     )
 
+export const PLAYER1 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
 export const DTO = new Dto
 (
     [PLAYER],
     0,
     "New Entry"
 )
+export const PLAYER2 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
 
+export const PLAYER3 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
 // TargetParams JSON
 // {"party" = 1, "self" = 1, "dead" = 0}
 
