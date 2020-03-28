@@ -16,13 +16,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.revature.project2.daos.PlayerDAOImpl;
-import com.revature.project2.pojo.Player;
+import com.revature.project2.daos.ActorDAOImpl;
+import com.revature.project2.pojo.Actor;
 import com.revature.project2.pojo.Stats;
 import com.revature.project2.util.SessionFactoryUtil;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PlayerDaoTest {
+public class ActorDaoTest {
 
 	@Mock
 	SessionFactory sf;
@@ -33,9 +33,11 @@ public class PlayerDaoTest {
 	@Mock
 	Transaction tx;
 	
-	private PlayerDAOImpl playerDao = new PlayerDAOImpl();
+	private ActorDAOImpl actorDao = new ActorDAOImpl();
 	
-	private Player player;
+	private Actor actor;
+	
+	private Stats stats;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -47,7 +49,8 @@ public class PlayerDaoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		//player = new Player(1, "Warrior", new Stats(1,1,1,1,1,1), "Heroes");
+		stats = new Stats(15,10,5,1,1,1);
+		actor = new Actor(1, "Warrior", stats, "Heroes");
 	}
 
 	@After
@@ -57,9 +60,9 @@ public class PlayerDaoTest {
 	@Test
 	public void getPlayerByIdTest() {
 		when(sf.openSession()).thenReturn(sess);
-		when(sess.get(Player.class, 1)).thenReturn(player);
-		playerDao.setSf(sf);
-		assertEquals("should return expected player", player, playerDao.getPlayerById(player.getId()));
+		when(sess.get(Actor.class, 1)).thenReturn(actor);
+		actorDao.setSf(sf);
+		assertEquals("should return expected actor", actor, actorDao.getActorById(actor.getId()));
 	}
 	
 	@Test
@@ -67,9 +70,9 @@ public class PlayerDaoTest {
 		Session realSess = SessionFactoryUtil.getSessionFactoryUtil().getSessionFactory().openSession();
 		realSess = Mockito.spy(realSess);
 		when(sf.openSession()).thenReturn(realSess);
-		playerDao.setSf(sf);
-		Player testPlayer = playerDao.getPlayerById(1);
-		assertEquals("should return expected player", testPlayer, player);
+		actorDao.setSf(sf);
+		Actor testActor = actorDao.getActorById(1);
+		assertEquals("should return expected player", testActor, actor);
 	}
-
+	
 }
