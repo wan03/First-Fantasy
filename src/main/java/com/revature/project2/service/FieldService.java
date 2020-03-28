@@ -100,15 +100,19 @@ public class FieldService {
 		// return a list of valid targets following the target rules given.
 		List<Integer> targets = new ArrayList<Integer>();
 		String userParty = combatants.get(selfIndex).getParty();
+		
 		for(int index = 0; index < combatants.size(); index++) {
+			
 			String query = combatants.get(index).getName();
 			boolean valid = false;
 			boolean isAlive = combatants.get(index).isAlive();
+			
 			if (params.getParty() == TGT.ALL.getValue()) { valid = true; }	else { // if looking for everyone.
-				// System.out.println("Checking " + index + ": " + query + " - Alive = " + isAlive);
+				 //System.out.println("Checking " + index + ": " + query + " - Alive = " + isAlive);
 				// Is target in the same party (an ally)?
+				 //System.out.println(combatants.get(index).getParty() + " " + userParty);
 				if (combatants.get(index).getParty().equals(userParty)){ // is an ally...
-					//System.out.println(query + " is an Ally.");
+					///System.out.println(query + " is an Ally.");
 					if (params.getParty() == TGT.ALLY.getValue()) {		// looking for an ally...
 						valid = true;
 					} // else {  System.out.println(query + " is an invalid target as an ally.");}
@@ -116,7 +120,7 @@ public class FieldService {
 					//System.out.println(query + " is an Enemy.");
 					if (params.getParty() == TGT.ENEMY.getValue()) {	// looking for an enemy...
 						valid = true;
-					} // else {  System.out.println(query + " is an invalid target as an enemy."); }
+					}  //else {  System.out.println(query + " is an invalid target as an enemy."); }
 				}
 			}
 			// If in the correct party, check independent validity.
@@ -127,19 +131,19 @@ public class FieldService {
 				// Is the target self?
 				if (index == selfIndex) {
 					if (params.getSelf() == TGT.NOTSELF.getValue()) {
-						System.out.println(query + " cannot target themselves.");
+						//System.out.println(query + " cannot target themselves.");
 						valid = false;
 					}
 				}
 				// is the target dead?
 				if (!isAlive) { // if is not alive...
 					if(params.getDead() == TGT.ALIVE.getValue()) { // only living targets wanted...
-						// System.out.println(query + " cannot target dead characters.");
+						 //System.out.println(query + " cannot target dead characters.");
 						valid = false;
 					}
 				} else { // if is alive...
 					if(params.getDead() == TGT.DEADONLY.getValue()) { // only dead targets wanted...
-						// System.out.println(query + " cannot target living characters with dead only actions.");
+						 //System.out.println(query + " cannot target living characters with dead only actions.");
 						valid = false;
 					}
 				}
