@@ -23,7 +23,7 @@ public class RegistrationController {
 		this.userService = userService;
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/register")
 	public ResponseEntity<HttpStatus> login(@RequestBody User user) {
 			
 			try {

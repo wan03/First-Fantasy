@@ -28,14 +28,12 @@ export class LoginComponent implements OnInit {
 
   // Methods
   sendLogin(): void {
-    let email = <unknown>this.loginForm.get("email");
-    let password = <unknown>this.loginForm.get("password");
     let u: User = {
       username: "",
       password: ""
     };
-    u.username = <string>email;
-    u.password = <string>password;
+    u.username = this.loginForm.get("email").value;
+    u.password = this.loginForm.get("password").value;
     this.loginService.sendLogin(u);
   }
 }

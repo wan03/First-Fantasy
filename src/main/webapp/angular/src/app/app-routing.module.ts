@@ -5,12 +5,13 @@ import { LoginComponent } from "./login/login.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
 import { DungeonComponent } from "./dungeon/dungeon.component";
 import { HomePageComponent } from "./home-page/home-page.component";
+import { AuthGuard } from "./auth/auth.guard";
 
 const routes: Routes = [
   { path: "menu", component: MainMenuComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegistrationFormComponent },
-  { path: "dungeon", component: DungeonComponent },
+  { path: "dungeon", component: DungeonComponent, canActivate: [AuthGuard] },
   { path: "", component: HomePageComponent, pathMatch: "full" }
 
   // {path: '', redirectTo: '/login', pathMatch: 'full'}
