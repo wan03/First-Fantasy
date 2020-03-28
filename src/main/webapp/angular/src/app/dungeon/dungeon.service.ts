@@ -26,7 +26,7 @@ export class DungeonService {
   //   console.log(JSON.stringify(playerList) + " JSON to POST")
   //   this.http.post(this.url, playerList);
   // }
-  postPlayer(PLAYER){
+  postPlayerList(PLAYER){
     console.log(JSON.stringify(PLAYER) + " JSON to POST")
     this.http.post(this.url, PLAYER);
   }
