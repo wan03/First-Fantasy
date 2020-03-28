@@ -13,35 +13,80 @@ export class DungeonComponent implements OnInit {
   constructor(private dungeonService: DungeonService) { }
 
   ngOnInit(): void {
-    //document.getElementById("submitBtn").setAttribute("disabled", "true");
+    document.getElementById("submitBtn").setAttribute("disabled", "true");
     this.dungeonService.getDto().subscribe(playerList => this.playerList = playerList);
-    //this.dungeonService.getPlayer().subscribe(player => this.player = player)
+
+    this.warrior.name = "not warrior";
   }
 
-  player = PLAYER;
-  //playerList =[];
   playerList: Player[] = [PLAYER];
-  allReady = [false,false,false,false];
+  currentHero: string = "";
+  //allReady = [false,false,false,false];
 
 
-   submitFunc(){
-     console.log("submitFunc()");
-     this.dungeonService.postPlayerList(this.playerList);
-     this.dungeonService.getDto();
-   }
+  // Get hero info
+  warrior: Player = PLAYER;
+  mage: Player = PLAYER;
+  gaurd: Player = PLAYER;
+  healer: Player = PLAYER;
+
+  
 
 
-  warriorAction(player){
+  submitFunc(){
+    console.log("submitFunc()");
+    this.dungeonService.postPlayerList(this.playerList);
+    this.dungeonService.getDto();
+  }
+
+
+  warriorAction(){
+    console.log("Warrior Name: " + this.warrior.name);
+    console.log("Warrior actor" + JSON.stringify(this.warrior));
+    document.getElementById("warriorActionBtn").setAttribute('style', 'background-color: black');
+    this.currentHero = 'warrior';
+    console.log("warriorAction()");
     console.log(this.playerList);
+    
   }
 
-  mageAction(player){
+  mageAction(){
+    console.log("mageAction()");
   }
 
-  guardAction(player){
+  guardAction(){
+    console.log("guardAction()");
   }
 
-  healerAction(player){
+  healerAction(){
+    console.log("healerAction()");
   }
 
+
+
+  goblinFn1(){
+
+  }
+
+  goblinFn2(){
+
+  }
+  
+  goblinFn3(){
+
+  }
+
+  goblinFn4(){
+
+  }
+
+  checkAllReady(allReady){
+    // Make the submit button selectable once all heroes took their turns
+    if(allReady[0] == true &&
+      allReady[1] == true &&
+      allReady[2] == true &&
+      allReady[3] == true) {
+      document.getElementById("submitBtn").setAttribute("disabled", "false");
+    }
+  }
 }
