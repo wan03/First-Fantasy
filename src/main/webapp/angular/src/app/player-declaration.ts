@@ -66,28 +66,60 @@ export class Stats {
 
 
 export class Player {
+    public id: number;
+    public fid: number;
+    public name: string;
+    public stats: Stats; // this is a new class to create
+    public action: Action;
+    public party: string;
+    public ready: boolean;
+    public targets: number[];
+    public alive: boolean
     constructor(
-        public id: number,
-        public fid: number,
-        public name: string,
-        public stats: Stats, // this is a new class to create
-        public action: Action,
-        public party: string,
-        public ready: boolean,
-        public targets: number[],
-        public alive: boolean
+        idInput: number,
+        fidInput: number,
+        nameInput: string,
+        statsInput: Stats, // this is a new class to create
+        actionInput: Action,
+        partyInput: string,
+        readyInput: boolean,
+        targetsInput: number[],
+        aliveInput: boolean
     ) { 
-        this.id = id;
-        this.fid = fid;
-        this.name = name;
-        this.stats = stats;
-        this.action = action;
-        this.party = party;
-        this.ready = ready;
-        this.targets = targets;
-        this.alive = alive;
+        this.id = idInput;
+        this.fid = fidInput;
+        this.name = nameInput;
+        this.stats = statsInput;
+        this.action = actionInput;
+        this.party = partyInput;
+        this.ready = readyInput;
+        this.targets = targetsInput;
+        this.alive = aliveInput;
     }
 }
+
+// export class Player {
+//     id: number;
+//     fid: number;
+//     name: string;
+//     stats: Stats; // this is a new class to create
+//     action: Action;
+//     party: string;
+//     ready: boolean;
+//     targets: number[];
+//     alive: boolean
+//     constructor(p: Player) { 
+//         this.id = p.id;
+//         this.fid = p.fid;
+//         this.name = p.name;
+//         this.stats = p.stats;
+//         this.action = p.action;
+//         this.party = p.party;
+//         this.ready = p.ready;
+//         this.targets = p.targets;
+//         this.alive = p.alive;
+//     }
+// }
 
 export class Dto {
     constructor(
