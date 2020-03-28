@@ -18,23 +18,23 @@ export class DungeonService {
 
   //action: {[k: string]: any} = {};
 
-  getPlayerList(): Observable <Player[]> {
+  getDto(): Observable <Player[]> {
     return this.http.get<Player[]>(this.url);
   }
 
-  // postPlayerList(playerList: Player[]){
-  //   console.log(JSON.stringify(playerList) + " JSON to POST")
-  //   this.http.post(this.url, playerList);
-  // }
-  postPlayerList(PLAYER){
-    console.log(JSON.stringify(PLAYER) + " JSON to POST")
-    this.http.post(this.url, PLAYER);
+  postPlayerList(playerList: Player[]){
+    console.log(JSON.stringify(playerList) + " JSON to POST")
+    this.http.post(this.url, playerList);
   }
+  // postPlayerList(PLAYER){
+  //   console.log(JSON.stringify(PLAYER) + " JSON to POST")
+  //   this.http.post(this.url, PLAYER);
+  // }
 
-  attack (player: Player){
+  //attack (player: Player){
     //console.log(player);
     //this.submitFunc(player)
-  }
+  //}
 
 
 
