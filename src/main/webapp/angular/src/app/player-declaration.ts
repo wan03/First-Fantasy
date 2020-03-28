@@ -89,6 +89,17 @@ export class Player {
     }
 }
 
+export class Dto {
+    constructor(
+        public characters: Player[],
+        public status: number,
+        public log: string
+    ) {
+        this.characters = characters;
+        this.status = status,
+        this.log = log
+    }
+}
 
 //{"id":0,"fid":0,"name":"Character",
 //"stats":{"hp":0,"atk":0,"def":0,"matk":0,"mdef":0,"spd":0,"acc":0,"evd":0,"crit":0,"chr":0,"dex":0},

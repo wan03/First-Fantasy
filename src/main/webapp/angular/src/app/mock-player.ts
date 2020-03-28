@@ -1,4 +1,4 @@
-import { Player,Action,TargetParams,Stats } from './player-declaration';
+import { Player,Action,TargetParams,Stats, Dto } from './player-declaration';
 
 export const TARGETPARAMS = new TargetParams
      (
@@ -51,6 +51,12 @@ export const PLAYER = new Player
         true //alive
     )
 
+export const DTO = new Dto
+(
+    [PLAYER],
+    0,
+    "New Entry"
+)
 
 // TargetParams JSON
 // {"party" = 1, "self" = 1, "dead" = 0}
