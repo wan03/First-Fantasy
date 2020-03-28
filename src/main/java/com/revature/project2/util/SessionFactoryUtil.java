@@ -19,7 +19,7 @@ private static SessionFactory sf;
 	private static final String USERNAME = System.getenv("PROJECT2_USERNAME");
 	private static final String PASSWORD = System.getenv("PROJECT2_PASSWORD");
 	private static final String URL = "jdbc:postgresql://" + System.getenv("PROJECT2_URL") + ":5432/postgres?";
-	private static String schema = "postgres";// This is the name in the AWS RDS
+	private static String schema = "public";// This is the name in the AWS RDS
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
 			sfu = new SessionFactoryUtil();
@@ -56,7 +56,7 @@ private static SessionFactory sf;
 	}
 
 	public static void setConfigFileLocationToTest() {
-		schema = "postgres";
+		schema = "public";
 	}
 	
 }

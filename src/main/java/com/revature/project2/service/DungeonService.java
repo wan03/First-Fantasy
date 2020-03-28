@@ -1,9 +1,11 @@
 package com.revature.project2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.revature.project2.daos.ActorDAOImpl;
 import com.revature.project2.daos.PlayerDAO;
 import com.revature.project2.daos.PlayerDAOImpl;
 import com.revature.project2.pojo.Actor;
@@ -16,6 +18,20 @@ public class DungeonService {
 	
 	BattleService bs;
 	FieldService fs;
+	ActorDAOImpl ad = new ActorDAOImpl();
+	public List<Actor> getActors(){
+		List<Actor> actorList = new ArrayList<Actor>();
+		actorList.add(ad.getActorById(1));
+		actorList.add(ad.getActorById(2));
+		actorList.add(ad.getActorById(3));
+		actorList.add(ad.getActorById(4));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+
+		return actorList;
+	}
 
 	public DungeonService() {
 		bs = BattleService.getBattleService();

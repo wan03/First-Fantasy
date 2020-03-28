@@ -1,7 +1,6 @@
 package com.revature.project2.controller;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.project2.pojo.Actor;
@@ -22,6 +20,7 @@ import com.revature.project2.service.DungeonService;
 public class DungeonController {
 	private static final Logger log = Logger.getRootLogger();
 	DungeonService ds = new DungeonService();
+
 
     @PostMapping(path = "/dungeon")
     @ResponseBody
@@ -37,21 +36,10 @@ public class DungeonController {
 
     @GetMapping(path = "/dungeon")
     @ResponseBody
-    public BattleDTO dungeonOutput(@RequestParam(required = false) Integer flag){
+    public List<Actor> dungeonOutput(){
     	log.trace("dungeonOutput(int)");
-    	if(flag == null)
-    		log.debug("victoryFlag == null");
-    	else
-    		log.debug("victoryFlag != null");
-    	BattleDTO battleDto = new BattleDTO();
+    	List<Actor> actorList = ds.getActors();
 
-    	battleDto.setStatus(0);
-    	battleDto.setLog("Stuff happened");
-    	List<Actor> actorList = new LinkedList<Actor>();
-    	actorList.add(new Actor());
-    	actorList.add(new Actor());
-    	battleDto.setCharacters(actorList);
-
-    	return battleDto;
+    	return actorList;
    	}
 }
