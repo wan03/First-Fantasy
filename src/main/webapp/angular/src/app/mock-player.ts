@@ -10,7 +10,7 @@ export const TARGETPARAMS = new TargetParams
 export const ACTION = new Action
     (
         "attack", //name = name of attack
-        1, //user 
+        0, //user 
         "warrior", //uName = name of character
         TARGETPARAMS, //targets 
         0, //amount 
@@ -23,7 +23,7 @@ export const ACTION = new Action
 
 export const PLAYER = new Player
     (
-        1, //fid
+        0, //fid
         "warrior", //name 
          [30,15,10,5,5,5], //stats
         ACTION, //action 

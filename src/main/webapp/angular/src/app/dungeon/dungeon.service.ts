@@ -22,9 +22,13 @@ export class DungeonService {
     return this.http.get<Player[]>(this.url);
   }
 
-  postPlayerList(playerList: Player[]){
-    console.log(JSON.stringify(playerList) + " JSON to POST")
-    this.http.post(this.url, playerList);
+  // postPlayerList(playerList: Player[]){
+  //   console.log(JSON.stringify(playerList) + " JSON to POST")
+  //   this.http.post(this.url, playerList);
+  // }
+  postPlayer(PLAYER){
+    console.log(JSON.stringify(PLAYER) + " JSON to POST")
+    this.http.post(this.url, PLAYER);
   }
 
   attack (player: Player){
