@@ -23,6 +23,13 @@ public class DungeonService {
 		List<Actor> actorList = new ArrayList<Actor>();
 		actorList.add(ad.getActorById(1));
 		actorList.add(ad.getActorById(2));
+		actorList.add(ad.getActorById(3));
+		actorList.add(ad.getActorById(4));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+		actorList.add(ad.getActorById(5));
+
 		return actorList;
 	}
 
