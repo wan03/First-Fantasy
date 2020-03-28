@@ -3,6 +3,7 @@ package com.revature.project2.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -13,12 +14,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 public class SessionFactoryUtil {
 
 private static SessionFactory sf;
+	private static final Logger log = Logger.getRootLogger();
 	private static SessionFactoryUtil sfu;
 	private static final String USERNAME = System.getenv("PROJECT2_USERNAME");
 	private static final String PASSWORD = System.getenv("PROJECT2_PASSWORD");
-	//private static final String PASSWORD = "doesnt234matter84756"; // Must be hard-coded for unknown reasons.
 	private static final String URL = "jdbc:postgresql://" + System.getenv("PROJECT2_URL") + ":5432/postgres?";
-	private static String schema = "public";// This is the name in the AWS RDS
+	private static String schema = "postgres";// This is the name in the AWS RDS
 	public static SessionFactoryUtil getSessionFactoryUtil() {
 		if (sfu == null) {
 			sfu = new SessionFactoryUtil();
@@ -55,7 +56,7 @@ private static SessionFactory sf;
 	}
 
 	public static void setConfigFileLocationToTest() {
-		schema = "project2_test";
+		schema = "postgres";
 	}
 	
 }
