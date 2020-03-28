@@ -187,12 +187,13 @@ public class Actor {
 		return true;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Actor [fid=" + fid + ", name=" + name + ", stats=" + stats + ", action=" + action + ", party=" + party
-				+ ", ready=" + ready + "]";
+		return "Actor [id=" + id + ", fid=" + fid + ", name=" + name + ", stats=" + stats + ", action=" + action
+				+ ", party=" + party + ", ready=" + ready + ", targets=" + targets + "]";
 	}
-	
+
 	public Actor() {
 		super();
 		this.id = 0;

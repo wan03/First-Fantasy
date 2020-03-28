@@ -26,12 +26,6 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User getUserByName(String name) {
-		Session sess = sf.openSession();
-		return sess.get(User.class, name);
-	}
-
-	@Override
 	public void addNewUser(User user) throws UserInsertionException {
 		Session sess = sf.openSession();
 		Transaction tx = sess.beginTransaction();

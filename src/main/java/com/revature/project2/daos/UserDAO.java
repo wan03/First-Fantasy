@@ -7,8 +7,6 @@ public interface UserDAO {
 	
 	public User getUserByEmail(String email);
 	
-	public User getUserByName(String name);
-	
 	public void addNewUser(User user) throws UserInsertionException;
 	
 	public void updateUser(User user) throws UserInsertionException;

@@ -5,11 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.revature.project2.pojo.User;
+import com.revature.project2.pojo.UserAuth;
 import com.revature.project2.util.Authentication;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,8 +24,8 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<HttpStatus> login(@RequestBody User user) {
-		User authUser = auth.validateUser(user.getEmail(), user.getPassword());
+	public ResponseEntity<HttpStatus> login(@RequestBody UserAuth userAuth) {
+		User authUser = auth.validateUser(userAuth.getEmail(), userAuth.getPassword());
 		if (authUser == null) {
 			return new ResponseEntity<HttpStatus>(HttpStatus.UNAUTHORIZED);
 		} else {
