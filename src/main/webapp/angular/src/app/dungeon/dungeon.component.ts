@@ -39,8 +39,8 @@ export class DungeonComponent implements OnInit {
 
   submitFunc(){
     console.log("submitFunc()");
-    // this.dungeonService.postPlayerList(this.playerList);
-    // this.dungeonService.getDto();
+    this.dungeonService.postPlayerList(this.playerList);
+    this.dungeonService.getDto();
   }
 
 
