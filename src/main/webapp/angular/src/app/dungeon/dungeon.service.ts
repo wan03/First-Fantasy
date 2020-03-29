@@ -18,7 +18,7 @@ export class DungeonService {
 
   //action: {[k: string]: any} = {};
 
-  getPlayerList(): Observable <Player[]> {
+  getDto(): Observable <Player[]> {
     return this.http.get<Player[]>(this.url);
   }
 
@@ -26,12 +26,27 @@ export class DungeonService {
     console.log(JSON.stringify(playerList) + " JSON to POST")
     this.http.post(this.url, playerList);
   }
+  // postPlayerList(PLAYER){
+  //   console.log(JSON.stringify(PLAYER) + " JSON to POST")
+  //   this.http.post(this.url, PLAYER);
+  // }
 
-  attack (player: Player){
+  //attack (player: Player){
     //console.log(player);
     //this.submitFunc(player)
-  }
+  //}
 
+//   public clone(): any {
+//     let cloneObj = new (<any>this.constructor());
+//     for (let attribut in this) {
+//         if (typeof this[attribut] === "object") {
+//             cloneObj[attribut] = this[attribut].clone();
+//         } else {
+//             cloneObj[attribut] = this[attribut];
+//         }
+//     }
+//     return cloneObj;
+// }
 
 
 

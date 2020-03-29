@@ -8,13 +8,14 @@ import org.springframework.stereotype.Component;
 
 import com.revature.project2.exceptions.UserInsertionException;
 import com.revature.project2.pojo.User;
+import com.revature.project2.util.SessionFactoryUtil;
 
 @Component
 public class UserDAOImpl implements UserDAO {
 	
-	private SessionFactory sf;
+	private SessionFactory sf = SessionFactoryUtil.getSessionFactoryUtil().getSessionFactory();
 	
-	@Autowired
+	//@Autowired
 	public void setSf(SessionFactory sf) {
 		this.sf = sf;
 	}
@@ -23,12 +24,6 @@ public class UserDAOImpl implements UserDAO {
 	public User getUserByEmail(String email) {
 		Session sess = sf.openSession();
 		return sess.get(User.class, email);
-	}
-
-	@Override
-	public User getUserByName(String name) {
-		Session sess = sf.openSession();
-		return sess.get(User.class, name);
 	}
 
 	@Override

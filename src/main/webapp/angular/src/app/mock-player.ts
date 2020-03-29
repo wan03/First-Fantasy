@@ -1,4 +1,4 @@
-import { Player,Action,TargetParams } from './player-declaration';
+import { Player,Action,TargetParams,Stats, Dto } from './player-declaration';
 
 export const TARGETPARAMS = new TargetParams
      (
@@ -10,29 +10,90 @@ export const TARGETPARAMS = new TargetParams
 export const ACTION = new Action
     (
         "attack", //name = name of attack
-        1, //user 
-        "warrior", //uName = name of character
+        0, //user 
         TARGETPARAMS, //targets 
         0, //amount 
         1, //astat 
         2, //dstat 
         0, //tstat 
         0, //element 
-        0 //focus 
+        0, //focus 
+        "warrior" //uName = name of character
     )
+
+
+export const STATS = new Stats
+    (
+        5, //hp: number,
+        5, //atk: number,
+        5, //def: number,
+        5, //matk: number,
+        5, //mdef: number,
+        5, //spd: number,
+        5, //acc: number,
+        5, //evd: number,
+        5, //crit: number,
+        5, //chr: number,
+        5 //dex: number
+    )
+
 
 export const PLAYER = new Player
     (
-        1, //fid
+        0, //id
+        0, //fid
         "warrior", //name 
-         [30,15,10,5,5,5], //stats
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
         ACTION, //action 
         "Heroes", //party 
         false, //ready 
-        [1]  //targets 
+        [1],  //targets 
+        true //alive
     )
 
+export const PLAYER1 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
+export const DTO = new Dto
+(
+    [PLAYER],
+    0,
+    "New Entry"
+)
+export const PLAYER2 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
 
+export const PLAYER3 = new Player
+    (
+        0, //id
+        0, //fid
+        "warrior", //name 
+        STATS, // [15,10,5,1,1,1], //stats; input the class STATS not the array.
+        ACTION, //action 
+        "Heroes", //party 
+        false, //ready 
+        [1],  //targets 
+        true //alive
+    )
 // TargetParams JSON
 // {"party" = 1, "self" = 1, "dead" = 0}
 

@@ -17,6 +17,7 @@ import com.revature.project2.pojo.Actor;
 import com.revature.project2.pojo.Monster;
 import com.revature.project2.pojo.Player;
 import com.revature.project2.pojo.Stats;
+import com.revature.project2.pojo.TargetParams;
 import com.revature.project2.service.BattleService;
 import com.revature.project2.service.FieldService;
 import com.revature.project2.util.ELM;
@@ -28,16 +29,16 @@ public class BattleServiceTest {
 	BattleService bs;
 	FieldService fs;
 	
-	Player player1 = new Player();
-	Player player2 = new Player();
-	Player player3 = new Player();
-	Player player4 = new Player();
+	Actor player1 = new Player();
+	Actor player2 = new Player();
+	Actor player3 = new Player();
+	Actor player4 = new Player();
 	
-	Monster monster1 = new Monster();
-	Monster monster2 = new Monster();
-	Monster monster3 = new Monster();
-	Monster monster4 = new Monster();
-	
+	Actor monster1 = new Monster();
+	Actor monster2 = new Monster();
+	Actor monster3 = new Monster();
+	Actor monster4 = new Monster();
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -50,6 +51,30 @@ public class BattleServiceTest {
 	public void setUp() throws Exception {
 		fs = FieldService.getField();
 		bs = BattleService.getBattleService();
+		
+//		ArrayList<Integer> targ1 = new ArrayList<Integer>();
+//		targ1.add(1);
+//		
+//		ArrayList<Integer> targ2 = new ArrayList<Integer>();
+//		targ2.add(0);
+//		
+//		player1.setId(50);
+//		player1.setFid(5);
+//		player1.setName("warrior");
+//		player1.setStats(new Stats(5,5,5,5,5,5,5,5,5,5,5));
+//		player1.setAction(new Action("attack",0, "warrior", new TargetParams(1,1,0),0,1,2,0,0,0));
+//		player1.setParty("Heroes");
+//		player1.setReady(false);
+//		player1.setTargets(targ1);
+//		
+//		player2.setId(99);
+//		player2.setFid(9);
+//		player2.setName("warrior");
+//		player2.setStats(new Stats(5,5,5,5,5,5,5,5,5,5,5));
+//		player2.setAction(new Action("attack",0, "warrior", new TargetParams(1,1,0),0,1,2,0,0,0));
+//		player2.setParty("Monsters");
+//		player2.setReady(false);
+//		player2.setTargets(targ2);
 		
 		Stats gob1Stats = new Stats(25,15,10,5,5,3);
 		Stats gob2Stats = new Stats(25,15,10,5,5,3);
@@ -93,38 +118,46 @@ public class BattleServiceTest {
 		monster1.setName("Goblin1");
 		monster1.setStats(gob1Stats);
 		monster1.setAction(gobpunch);
+		monster1.setParty("Monsters");
 		
 		monster2.setName("Goblin2");
 		monster2.setStats(gob2Stats);
 		monster2.setAction(gobpunch);
+		monster2.setParty("Monsters");
 		
 		monster3.setName("Goblin3");
 		monster3.setStats(gob3Stats);
 		monster3.setAction(gobpunch);
+		monster3.setParty("Monsters");
 		
 		monster4.setName("Goblin4");
 		monster4.setStats(gob4Stats);
 		monster4.setAction(gobpunch);
+		monster4.setParty("Monsters");
 		
 		player1.setName("Warrior");
 		player1.setStats(warStats);
 		player1.setAction(warpunch);
 		player1.setTargets(wartarg);
+		player1.setParty("Heroes");
 		
 		player2.setName("Mage");
 		player2.setStats(magStats);
 		player2.setAction(magspell);
 		player2.setTargets(magtarg);
+		player2.setParty("Heroes");
 		
 		player3.setName("Guard");
 		player3.setStats(grdStats);
 		player3.setAction(warpunch);
 		player3.setTargets(grdtarg);
+		player3.setParty("Heroes");
 		
 		player4.setName("Healer");
 		player4.setStats(hlrStats);
 		player4.setAction(hlrspell);
 		player4.setTargets(hlrtarg);
+		player4.setParty("Heroes");
 		
 		fs.addCombatant(player1);
 		fs.addCombatant(player2);

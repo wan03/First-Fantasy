@@ -31,8 +31,6 @@ export class LoginService {
 
   sendLogin(user: User): void {
     console.log("sendLogin(User)");
-    // This is where the post statement will go.
-    // The server should redirect to the main menu page.
 
     this.http.post(this.url, user).subscribe((user:User) => {
       if (user){
@@ -40,16 +38,27 @@ export class LoginService {
         this.router.navigate(["/dungeon", user]);
       }
     })
-    // if (this.authenticate(user)) {
-    //   console.log("Match");
-    // } else {
-    //   console.log("No Match");
-    // }
+
   }
 
-  authenticate(user: User): boolean {
-    // TODO: Must authenticate on server-side. Completely delete.
-    console.log("authenticate(User)");
-    return USER.username === user.username && USER.password === user.password;
+  putInfo(registrationForm){
+    console.log(JSON.stringify(registrationForm) + " JSON to PUT")
+    this.http.put(this.url, registrationForm);
   }
+
+  // sendLogin(user: User): void {
+  //   console.log("sendLogin(User)");
+  //   // This is where the post statement will go.
+  //   // The server should redirect to the main menu page.
+  //   if (this.authenticate(user)) {
+  //     console.log("Match");
+  //   } else {
+  //     console.log("No Match");
+  //   }
+  // }
+
+  // authenticate(user: User): boolean {
+  //   console.log("authenticate(User)");
+  //   return USER.username === user.username && USER.password === user.password;
+  // }
 }

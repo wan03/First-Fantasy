@@ -4,27 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.revature.project2.service.FieldService;
 import com.revature.project2.util.STS;
 
-public abstract class Actor {
+@Entity
+@Table(name = "actor")
+public class Actor {
 	
 	@Id
 	@Column(name = "id")
-	protected int id;
+	private int id;
 	
 	@Transient
-	protected int fid;				// The Character's Field ID - their location in the Field Service Combatants array.
+	private int fid;				// The Character's Field ID - their location in the Field Service Combatants array.
 	
 	@Column(name = "name")
-	protected String name;
+	private String name;
 	
 	//private String cclass;
 	
-	protected Stats stats;
+	private Stats stats;
 	
 	//private int exp;
 	
@@ -35,16 +39,16 @@ public abstract class Actor {
 	//private Spells[] spell;
 	
 	@Transient
-	protected Action action;			// The prepared action the Actor will take this round.
+	private Action action;			// The prepared action the Actor will take this round.
 	
 	@Column(name = "party")
-	protected String party;
+	private String party;
 	
 	@Transient
-	protected boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
+	private boolean ready;			// Whether the character is ready to perform an action (or has performed already.)
 	
 	@Transient
-	protected List<Integer> targets;
+	private List<Integer> targets;
 	
 	@Transient
 	FieldService fs;
@@ -183,12 +187,13 @@ public abstract class Actor {
 		return true;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Actor [fid=" + fid + ", name=" + name + ", stats=" + stats + ", action=" + action + ", party=" + party
-				+ ", ready=" + ready + "]";
+		return "Actor [id=" + id + ", fid=" + fid + ", name=" + name + ", stats=" + stats + ", action=" + action
+				+ ", party=" + party + ", ready=" + ready + ", targets=" + targets + "]";
 	}
-	
+
 	public Actor() {
 		super();
 		this.id = 0;
@@ -200,6 +205,14 @@ public abstract class Actor {
 		this.ready = false;
 		this.fs = FieldService.getField();
 		this.targets = new ArrayList<Integer>();
+	}
+
+	public Actor(int id, String name, Stats stats, String party) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.stats = stats;
+		this.party = party;
 	}
 
 }
