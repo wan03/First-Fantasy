@@ -66,8 +66,8 @@ export const PLAYER1 = new Player
 export const DTO = new Dto
 (
     [PLAYER],
-    0,
-    "New Entry"
+    "New Entry",
+    0
 )
 export const PLAYER2 = new Player
     (

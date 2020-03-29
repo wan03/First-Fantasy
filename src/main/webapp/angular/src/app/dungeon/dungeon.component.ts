@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DungeonService } from './dungeon.service';
-import { Player } from '../player-declaration';
-import { PLAYER,PLAYER1,PLAYER2,PLAYER3, } from '../mock-player';
+import { Player, Dto } from '../player-declaration';
+import { DTO, PLAYER,PLAYER1,PLAYER2,PLAYER3, } from '../mock-player';
 import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Component({
@@ -15,14 +15,23 @@ export class DungeonComponent implements OnInit {
 
   ngOnInit(): void {
     document.getElementById("submitBtn").setAttribute("disabled", "");
-    this.dungeonService.getDto().subscribe(playerList => this.playerList = playerList);
+    //this.dungeonService.getDto().subscribe(playerList => this.playerList = playerList);
+    this.dungeonService.getInitPlayerList().subscribe(playerList => {
+    this.playerList = playerList;
+    this.playerList[4].ready = true;
+    this.playerList[5].ready = true;
+    this.playerList[6].ready = true;
+    this.playerList[7].ready = true;
+    });
 
     this.warrior.name = "warrior";
     this.mage.name = "mage";
     this.guard.name = "guard";
     this.healer.name = "healer";
+
   }
 
+  dto: Dto = DTO;
   currentHero: string = "";
   allReady = [false,false,false,false];
 
@@ -33,21 +42,54 @@ export class DungeonComponent implements OnInit {
   guard: Player = PLAYER2;
   healer: Player = PLAYER3;
   playerList: Player[] = [this.warrior, this.mage, this.guard, this.healer];
+                          //this.warrior, this.mage, this.guard, this.healer];
 
   
 
 
   submitFunc(){
     console.log("submitFunc()");
-    this.dungeonService.postPlayerList(this.playerList);
-    this.dungeonService.getDto();
+    this.dto.characters = this.playerList;
+    this.dto.log = "";
+    this.dto.status = 0;
+    //this.dungeonService.postPlayerList(this.playerList);
+    this.dungeonService.postDto(this.dto).subscribe(data => {
+      this.dto = data;
+      this.playerList = this.dto.characters;
+      document.getElementById("combatLogSection").innerHTML = this.dto.log;
+      if(this.dto.status === 1){
+        alert("YOU WIN")
+      } else if(this.dto.status === -1){
+        alert("YOU LOSE")
+      } else {
+        document.getElementById("submitBtn").setAttribute("disabled", "");
+
+        document.getElementById("warriorActionBtn").setAttribute('style', 'background-color: blue; max-width: 8rem;');
+        document.getElementById("mageActionBtn").setAttribute('style', 'background-color: blue; max-width: 8rem;');
+        document.getElementById("guardActionBtn").setAttribute('style', 'background-color: blue; max-width: 8rem;');
+        document.getElementById("healerActionBtn").setAttribute('style', 'background-color: blue; max-width: 8rem;');
+
+        document.getElementById("warriorActionBtn").removeAttribute("disabled");
+        document.getElementById("mageActionBtn").removeAttribute("disabled");
+        document.getElementById("guardActionBtn").removeAttribute("disabled");
+        document.getElementById("healerActionBtn").removeAttribute("disabled");
+
+        this.playerList[4].ready = true;
+        this.playerList[5].ready = true;
+        this.playerList[6].ready = true;
+        this.playerList[7].ready = true;
+
+        this.allReady = [false,false,false,false];
+      }
+
+    });
   }
 
 
   warriorAction(){
     console.log("warriorAction()");
     console.log("warrior = " + this.warrior);
-    document.getElementById("warriorActionBtn").setAttribute('style', 'background-color: grey');
+    document.getElementById("warriorActionBtn").setAttribute('style', 'background-color: grey; max-width: 8rem;');
     this.currentHero = this.warrior.name;
     console.log(this.playerList);
     document.getElementById("mageActionBtn").setAttribute("disabled","disabled");
@@ -57,7 +99,7 @@ export class DungeonComponent implements OnInit {
 
   mageAction(){
     console.log("mageAction()");
-    document.getElementById("mageActionBtn").setAttribute('style', 'background-color: grey');
+    document.getElementById("mageActionBtn").setAttribute('style', 'background-color: grey; max-width: 8rem;');
     this.currentHero = this.mage.name;
     console.log(this.playerList);
     document.getElementById("warriorActionBtn").setAttribute("disabled","disabled");
@@ -67,7 +109,7 @@ export class DungeonComponent implements OnInit {
 
   guardAction(){
     console.log("guardAction()");
-    document.getElementById("guardActionBtn").setAttribute('style', 'background-color: grey');
+    document.getElementById("guardActionBtn").setAttribute('style', 'background-color: grey; max-width: 8rem;');
     this.currentHero = this.guard.name;
     console.log(this.playerList);
     document.getElementById("warriorActionBtn").setAttribute("disabled","disabled");
@@ -77,7 +119,7 @@ export class DungeonComponent implements OnInit {
 
   healerAction(){
     console.log("healerAction()");
-    document.getElementById("healerActionBtn").setAttribute('style', 'background-color: grey');
+    document.getElementById("healerActionBtn").setAttribute('style', 'background-color: grey; max-width: 8rem;');
     this.currentHero = this.healer.name;
     console.log(this.playerList);
     document.getElementById("warriorActionBtn").setAttribute("disabled","disabled");
@@ -89,9 +131,11 @@ export class DungeonComponent implements OnInit {
 
   goblinFn1(){
     console.log("goblinFn1()");
+    console.log(this.playerList[4]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [4];
+    this.playerList[heroNum].ready = true;
     this.currentHero = "";
     console.log("Updated Hero: " + this.playerList[heroNum]);
     this.allReady[heroNum] = true;
@@ -105,9 +149,11 @@ export class DungeonComponent implements OnInit {
 
   goblinFn2(){
     console.log("goblinFn2()");
+    console.log(this.playerList[5]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [5];
+    this.playerList[heroNum].ready = true;
     this.currentHero = "";
     console.log("Updated Hero: " + this.playerList[heroNum]);
     this.allReady[heroNum] = true;
@@ -120,9 +166,11 @@ export class DungeonComponent implements OnInit {
   
   goblinFn3(){
     console.log("goblinFn3()");
+    console.log(this.playerList[6]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [6];
+    this.playerList[heroNum].ready = true;
     this.currentHero = "";
     console.log("Updated Hero: " + this.playerList[heroNum]);
     this.allReady[heroNum] = true;
@@ -135,9 +183,11 @@ export class DungeonComponent implements OnInit {
 
   goblinFn4(){
     console.log("goblinFn4()");
+    console.log(this.playerList[7]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [7];
+    this.playerList[heroNum].ready = true;
     this.currentHero = "";
     console.log("Updated Hero: " + this.playerList[heroNum]);
     this.allReady[heroNum] = true;

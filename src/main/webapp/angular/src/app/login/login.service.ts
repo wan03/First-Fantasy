@@ -16,9 +16,9 @@ export class LoginService {
 
   valid;
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
 
   isValid(){
     if (this.valid){
@@ -41,9 +41,17 @@ export class LoginService {
 
   }
 
-  putInfo(registrationForm){
-    console.log(JSON.stringify(registrationForm) + " JSON to PUT")
-    this.http.put(this.url, registrationForm);
+  putInfo(form){
+    console.log(JSON.stringify(form) + " JSON to PUT")
+    this.http.put(this.url, form, {observe: "response"}).subscribe(resp => {
+      if(resp.status === 200){
+        this.valid = true;
+        console.log(resp);
+        this.router.navigate(["/dungeon"]);
+      } else {
+        alert("Email/Password was wrong!!!");
+      }
+    });
   }
 
   // sendLogin(user: User): void {

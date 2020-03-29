@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Player } from '../player-declaration';
+import { Player,Dto } from '../player-declaration';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,14 +18,23 @@ export class DungeonService {
 
   //action: {[k: string]: any} = {};
 
-  getDto(): Observable <Player[]> {
+  getInitPlayerList(): Observable <Player[]> {
     return this.http.get<Player[]>(this.url);
   }
 
-  postPlayerList(playerList: Player[]){
-    console.log(JSON.stringify(playerList) + " JSON to POST")
-    this.http.post(this.url, playerList);
+  postDto(dto: Dto): Observable <Dto> {
+    //return this.http.post<Dto>(this.url);
+    // dto: Dto;
+    // this.dungeonComponent.dto = dto
+    //this.http.post(this.url, dto).subscribe(data => {return data;});
+    return this.http.post<Dto>(this.url, dto);
   }
+
+  // postPlayerList(playerList: Player[]){
+  //   //console.log(JSON.stringify(playerList) + " JSON to POST")
+  //   //this.http.post(this.url, playerList).subscribe(data => playerList = data);
+  //   this.http.post(this.url, playerList).subscribe();
+  // }
   // postPlayerList(PLAYER){
   //   console.log(JSON.stringify(PLAYER) + " JSON to POST")
   //   this.http.post(this.url, PLAYER);

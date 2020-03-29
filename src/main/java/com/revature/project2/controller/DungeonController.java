@@ -1,6 +1,5 @@
 package com.revature.project2.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -12,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.project2.pojo.Actor;
-import com.revature.project2.pojo.BattleDTO;
+import com.revature.project2.pojo.Dto;
+import com.revature.project2.pojo.Player;
 import com.revature.project2.service.DungeonService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,12 +24,13 @@ public class DungeonController {
 
     @PostMapping(path = "/dungeon")
     @ResponseBody
-	public BattleDTO dungeonInput(@RequestBody ArrayList<Actor> playerList){
+	public Dto dungeonInput(@RequestBody Dto dto){
     	log.trace("dungeonInput(ArrayList<Actor>)");
+    	List<Actor> playerList = dto.getCharacters();
     	log.debug("playerList == null : " + (playerList==null));
 //    	for(Actor player : playerList)
 //    		System.out.println(player.toString());
-    	BattleDTO battleDto = ds.playRound(playerList);
+    	Dto battleDto = ds.playRound(playerList);
     	return battleDto;
    	}
 

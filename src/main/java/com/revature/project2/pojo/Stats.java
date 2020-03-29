@@ -167,6 +167,7 @@ public class Stats {
 	}
 
 	public void setStat(int stat, int value) {
+		if(value <= 0) {value = 0;}
 		switch (stat) {
 		case 0:
 			{this.hp = value; break;}
