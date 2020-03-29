@@ -16,12 +16,19 @@ export class DungeonComponent implements OnInit {
   ngOnInit(): void {
     document.getElementById("submitBtn").setAttribute("disabled", "");
     //this.dungeonService.getDto().subscribe(playerList => this.playerList = playerList);
-    this.dungeonService.getInitPlayerList().subscribe(playerList => this.playerList = playerList);
+    this.dungeonService.getInitPlayerList().subscribe(playerList => {
+    this.playerList = playerList;
+    this.playerList[4].ready = true;
+    this.playerList[5].ready = true;
+    this.playerList[6].ready = true;
+    this.playerList[7].ready = true;
+    });
 
     this.warrior.name = "warrior";
     this.mage.name = "mage";
     this.guard.name = "guard";
     this.healer.name = "healer";
+
   }
 
   dto: Dto = DTO;
@@ -35,6 +42,7 @@ export class DungeonComponent implements OnInit {
   guard: Player = PLAYER2;
   healer: Player = PLAYER3;
   playerList: Player[] = [this.warrior, this.mage, this.guard, this.healer];
+                          //this.warrior, this.mage, this.guard, this.healer];
 
   
 
@@ -65,6 +73,13 @@ export class DungeonComponent implements OnInit {
         document.getElementById("mageActionBtn").removeAttribute("disabled");
         document.getElementById("guardActionBtn").removeAttribute("disabled");
         document.getElementById("healerActionBtn").removeAttribute("disabled");
+
+        this.playerList[4].ready = true;
+        this.playerList[5].ready = true;
+        this.playerList[6].ready = true;
+        this.playerList[7].ready = true;
+
+        this.allReady = [false,false,false,false];
       }
 
     });
@@ -116,6 +131,7 @@ export class DungeonComponent implements OnInit {
 
   goblinFn1(){
     console.log("goblinFn1()");
+    console.log(this.playerList[4]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [4];
@@ -133,6 +149,7 @@ export class DungeonComponent implements OnInit {
 
   goblinFn2(){
     console.log("goblinFn2()");
+    console.log(this.playerList[5]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [5];
@@ -149,6 +166,7 @@ export class DungeonComponent implements OnInit {
   
   goblinFn3(){
     console.log("goblinFn3()");
+    console.log(this.playerList[6]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [6];
@@ -165,6 +183,7 @@ export class DungeonComponent implements OnInit {
 
   goblinFn4(){
     console.log("goblinFn4()");
+    console.log(this.playerList[7]);
     let heroNum = this.findHero(this.currentHero);
     console.log("heroNum: " + heroNum);
     this.playerList[heroNum].targets = [7];
