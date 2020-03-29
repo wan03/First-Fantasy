@@ -2,7 +2,7 @@ package com.revature.project2.pojo;
 
 import java.util.List;
 
-public class BattleDTO {
+public class Dto {
 
 	List<Actor> characters;
 	int status;
@@ -43,7 +43,7 @@ public class BattleDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BattleDTO other = (BattleDTO) obj;
+		Dto other = (Dto) obj;
 		if (characters == null) {
 			if (other.characters != null)
 				return false;
@@ -62,11 +62,11 @@ public class BattleDTO {
 	public String toString() {
 		return "BattleDTO [characters=" + characters + ", status=" + status + ", log=" + log + "]";
 	}
-	public BattleDTO() {
+	public Dto() {
 		super();
 		// Auto-generated constructor stub
 	}
-	public BattleDTO(List<Actor> characters, int status, String log) {
+	public Dto(List<Actor> characters, int status, String log) {
 		super();
 		this.characters = characters;
 		this.status = status;

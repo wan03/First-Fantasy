@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
   sendLogin(): void {
     let u: User = {
       username: "",
+      email: "",
       password: ""
     };
-    u.username = this.loginForm.get("email").value;
+    u.email = this.loginForm.get("email").value;
     u.password = this.loginForm.get("password").value;
     this.loginService.putInfo(u);
   }

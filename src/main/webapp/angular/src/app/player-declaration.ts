@@ -124,12 +124,12 @@ export class Player {
 export class Dto {
     constructor(
         public characters: Player[],
-        public status: number,
-        public log: string
+        public log: string,
+        public status: number
     ) {
         this.characters = characters;
-        this.status = status,
-        this.log = log
+        this.log = log,
+        this.status = status
     }
 }
 

@@ -92,6 +92,13 @@ public class User {
 		this.password = password;
 	}
 
+	public User(String email, String password) {
+		super();
+		//this.name = null;
+		this.email = email;
+		this.password = password;
+	}
+
 	public User() {
 		super();
 	}

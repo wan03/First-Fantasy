@@ -24,13 +24,13 @@
 
         <div class="card-footer">
             <div class="row">
-                <button id="warriorActionBtn" (click)="warriorAction()" class="btn btn-primary col-3" style="max-width: 8rem;">Attack</button>
-                <button id="mageActionBtn" (click)="mageAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</button>
-                <button id="guardActionBtn" (click)="guardAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</button>
-                <button id="healerActionBtn" (click)="healerAction()" class="btn btn-primary col-3 ml-2" style="max-width: 8rem;">Attack</button>
+                <button id="warriorActionBtn" (click)="warriorAction()" class="btn btn-primary col-3" style="background-color: blue; max-width: 8rem;">Attack</button>
+                <button id="mageActionBtn" (click)="mageAction()" class="btn btn-primary col-3 ml-2" style="background-color: blue; max-width: 8rem;">Attack</button>
+                <button id="guardActionBtn" (click)="guardAction()" class="btn btn-primary col-3 ml-2" style="background-color: blue; max-width: 8rem;">Attack</button>
+                <button id="healerActionBtn" (click)="healerAction()" class="btn btn-primary col-3 ml-2" style="background-color: blue; max-width: 8rem;">Attack</button>
             </div>
             <div class="row mt-2">
-                <button id="submitBtn" (click)="submitFunc()" class="btn btn-primary btn-lg btn-block" style="max-width: 33.5rem;">Submit!</button>
+                <button id="submitBtn" (click)="submitFunc()" class="btn btn-primary btn-lg btn-block" style="background-color: maroon; max-width: 33.5rem;">Submit!</button>
                 <!-- <button id="submitBtn" class="btn btn-primary btn-lg btn-block mt-2">Submit!</button> -->
             </div>
         </div>
@@ -39,6 +39,7 @@
     <div class="card" style="max-width: 256px;">
         <div class="card-header">Combat Log</div>
         <div class="card-body">
+            <p id="combatLogSection"></p>
         </div>
     </div>
 

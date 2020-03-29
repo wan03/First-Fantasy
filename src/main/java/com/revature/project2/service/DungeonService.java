@@ -9,7 +9,7 @@ import com.revature.project2.daos.ActorDAOImpl;
 import com.revature.project2.daos.PlayerDAO;
 import com.revature.project2.daos.PlayerDAOImpl;
 import com.revature.project2.pojo.Actor;
-import com.revature.project2.pojo.BattleDTO;
+import com.revature.project2.pojo.Dto;
 import com.revature.project2.pojo.Player;
 
 //@Service
@@ -56,7 +56,7 @@ public class DungeonService {
 		return (Integer) bs.getStatus();
 	}
 
-	public BattleDTO playRound(List<Actor> update) {
+	public Dto playRound(List<Actor> update) {
 		log.trace("playRound(List<Actor>)");
 	        fs.setCombatants(update);
 	        List<Actor> actorList = fs.getCombatants();
@@ -64,6 +64,6 @@ public class DungeonService {
 	        	System.out.println(actor);
 	        String battleLog = bs.round();
 	        log.debug(battleLog);
-	        return new BattleDTO (fs.getCombatants(),bs.getStatus(),battleLog);
+	        return new Dto (fs.getCombatants(),bs.getStatus(),battleLog);
 	}
 }

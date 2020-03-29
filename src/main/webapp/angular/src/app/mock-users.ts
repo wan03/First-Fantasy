@@ -1,2 +1,2 @@
 import { User } from './user-class';
-export const USER: User = {username:"u123", password:"p123"}
+export const USER: User = {username:"u123", email:"email@email.com", password:"p123"}
