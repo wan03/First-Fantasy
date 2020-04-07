@@ -11,7 +11,7 @@ Calvin England
 
 # Description:
 
-	First Fantasy is a semi-original turn-based RPG playable in your web browser. Defend yourself from a horde of goblins by using strategy to cut them down using your four-player party’s attacks. This project uses a simple and intuitive UI to increase legibility. Round results are displayed in clear and unambiguous language. It also connects to an Amazon RDS with default character information, allowing for quick start-up to the gameplay.
+First Fantasy is a semi-original turn-based RPG playable in your web browser. Defend yourself from a horde of goblins by using strategy to cut them down using your four-player party’s attacks. This project uses a simple and intuitive UI to increase legibility. Round results are displayed in clear and unambiguous language. It also connects to an Amazon RDS with default character information, allowing for quick start-up to the gameplay.
 
 ## This project utilizes the following technologies:
 
