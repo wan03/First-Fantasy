@@ -2,10 +2,10 @@
 
 # Developers:
 
-Jonatan Martinez
-Enoc Santiago
-Chris Eshelman
-Calvin England
+Jonatan Martinez  
+Enoc Santiago  
+Chris Eshelman  
+Calvin England  
 
 
 
